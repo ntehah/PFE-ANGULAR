@@ -1,0 +1,1327 @@
+
+
+<div class="main-content ">
+  <div   class="form-group row">
+    <div class="col-md-6"  >
+  <div   class="form-group row" *ngIf="departements">
+    <label class="col-md-3 col-form-label  text-success"> 
+      <strong>Departement</strong> 
+
+    </label><div class="col-md-4"  >
+  <div class="input-container">
+    <select class="form-control"  name="departement" ngModel (change)="getdepartements($event.target.value)">
+      <option *ngFor="let w of departements._embedded.departements" [value]="w.id">{{w.codeDepartement}}</option>
+    </select></div></div></div></div>
+
+    <br>
+    <div class="col-md-3"  >
+    <div  class="form-group row"  *ngIf="moughataas">
+  <label class="col-md-4 col-form-label  text-success"> 
+    <strong>filliere</strong>
+
+  </label><div class="col-md-6"  >
+ 
+  <div class="input-container">
+    <select class="form-control" name="groupe" ngModel   (change)="setSelectedMoughataa($event.target.value)">
+      <option *ngFor="let m of moughataas" [value]="m.nomfilliere">{{m.codefilliere}}</option>
+    </select>
+  </div>
+  </div></div>
+
+</div></div>
+  <div class="container-fluid">
+
+  <div *ngIf="mode == 'IG'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong> Informatique du Gestion </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="IG">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+            
+                  <th>
+                    filliere
+                    </th>
+                    <th>
+                      groupe
+                      </th>
+                    <th>
+                      Niveau
+                      </th>
+                 
+               <th>
+                 Compte
+               </th>
+                   
+                  
+                  
+     
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of IG._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                      {{s.groupe.nomGrp}}
+                      </td>
+                      
+                        <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                          {{s.niveau.code}}
+                          </td>
+                   
+                        
+                          <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                        <button a routerLink="/CompteToEtudiant" title="crée un compte"> 
+                          <img src="assets/menu/images/compte1.jpg" width="40"></button>
+  
+                      </td>
+                     
+              
+             
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+        
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div *ngIf="mode == 'TCM'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>  Techniques  Commerciales et Marketing </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="IG">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+            
+                  <th>
+                    filliere
+                    </th>
+                    <th>
+                      groupe
+                      </th>
+                    <th>
+                      Niveau
+                      </th>
+                 
+               <th>
+                 Compte
+               </th>
+                   
+                  
+                  
+     
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of TCM._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'TCM'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'TCM'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'TCM'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'TCM'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'TCM'">
+                      {{s.groupe.nomGrp}}
+                      </td>
+                      
+                        <td  *ngIf="s.filliere.codefilliere == 'TCM'">
+                          {{s.niveau.code}}
+                          </td>
+                   
+                        
+                          <td  *ngIf="s.filliere.codefilliere == 'TCM'">
+                        <button a routerLink="/CompteToEtudiant" title="crée un compte"> 
+                          <img src="assets/menu/images/compte1.jpg" width="40"></button>
+  
+                      </td>
+                     
+              
+             
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+        
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div *ngIf="mode == 'RH'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>  Gestion des Ressources Humaines </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="IG">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+            
+                  <th>
+                    filliere
+                    </th>
+                    <th>
+                      groupe
+                      </th>
+                    <th>
+                      Niveau
+                      </th>
+                 
+               <th>
+                 Compte
+               </th>
+                   
+                  
+                  
+     
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of RH._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'RH'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'RH'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'RH'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'RH'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'RH'">
+                      {{s.groupe.nomGrp}}
+                      </td>
+                      
+                        <td  *ngIf="s.filliere.codefilliere == 'RH'">
+                          {{s.niveau.code}}
+                          </td>
+                   
+                        
+                          <td  *ngIf="s.filliere.codefilliere == 'RH'">
+                        <button a routerLink="/CompteToEtudiant" title="crée un compte"> 
+                          <img src="assets/menu/images/compte1.jpg" width="40"></button>
+  
+                      </td>
+                     
+              
+             
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+        
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div *ngIf="mode == 'SE'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>  Statistique appliquee a l Economie</strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="IG">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+            
+                  <th>
+                    filliere
+                    </th>
+                    <th>
+                      groupe
+                      </th>
+                    <th>
+                      Niveau
+                      </th>
+                 
+               <th>
+                 Compte
+               </th>
+                   
+                  
+                  
+     
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of SE._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'SE'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'SE'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'SE'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'SE'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'SE'">
+                      {{s.groupe.nomGrp}}
+                      </td>
+                      
+                        <td  *ngIf="s.filliere.codefilliere == 'SE'">
+                          {{s.niveau.code}}
+                          </td>
+                   
+                        
+                          <td  *ngIf="s.filliere.codefilliere == 'SE'">
+                        <button a routerLink="/CompteToEtudiant" title="crée un compte"> 
+                          <img src="assets/menu/images/compte1.jpg" width="40"></button>
+  
+                      </td>
+                     
+              
+             
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+        
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div *ngIf="mode == 'RS'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>Reseaux informatiques et Telecommunications </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="IG">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+            
+                  <th>
+                    filliere
+                    </th>
+                    <th>
+                      groupe
+                      </th>
+                    <th>
+                      Niveau
+                      </th>
+                 
+               <th>
+                 Compte
+               </th>
+                   
+                  
+                  
+     
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of RS._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                      {{s.groupe.nomGrp}}
+                      </td>
+                      
+                        <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                          {{s.niveau.code}}
+                          </td>
+                   
+                        
+                          <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                        <button a routerLink="/CompteToEtudiant" title="crée un compte"> 
+                          <img src="assets/menu/images/compte1.jpg" width="40"></button>
+  
+                      </td>
+                     
+              
+             
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+        
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="mode == 'BA'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong> Banques & Assurances </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="IG">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+              
+                  <th>
+                    filliere
+                    </th>
+                    <th>
+                      groupe
+                      </th>
+                    <th>
+                      Niveau
+                      </th>
+                 
+               <th>
+                 Compte
+               </th>
+                   
+                  
+                  
+     
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of BA._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                      {{s.groupe.nomGrp}}
+                      </td>
+                    
+                        <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                          {{s.niveau.code}}
+                          </td>
+                   
+                        
+                          <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                        <button a routerLink="/CompteToEtudiant" title="crée un compte"> 
+                          <img src="assets/menu/images/compte1.jpg" width="40"></button>
+  
+                      </td>
+                     
+              
+             
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+        
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div *ngIf="mode == 'FC'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>  Finance et Comptabilite</strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="IG">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+            
+                  <th>
+                    filliere
+                    </th>
+                    <th>
+                      groupe
+                      </th>
+                    <th>
+                      Niveau
+                      </th>
+                 
+               <th>
+                 Compte
+               </th>
+                   
+                  
+                  
+     
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of FC._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                      {{s.groupe.nomGrp}}
+                      </td>
+                      
+                        <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                          {{s.niveau.code}}
+                          </td>
+                   
+                        
+                          <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                        <button a routerLink="/CompteToEtudiant" title="crée un compte"> 
+                          <img src="assets/menu/images/compte1.jpg" width="40"></button>
+  
+                      </td>
+                     
+              
+             
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+        
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div *ngIf="mode == 'DI'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>   Develeoppment_Informatique </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="IG">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+               
+                  <th>
+                    filliere
+                    </th>
+                    <th>
+                      groupe
+                      </th>
+                    <th>
+                      Niveau
+                      </th>
+                 
+               <th>
+                 Compte
+               </th>
+                   
+                  
+         
+           
+  
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of DI._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'D.I'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'D.I'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'D.I'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'D.I'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'D.I'">
+                      {{s.groupe.nomGrp}}
+                      </td>
+                     
+                        <td  *ngIf="s.filliere.codefilliere == 'D.I'">
+                          {{s.niveau.code}}
+                          </td>
+                   
+                        
+                          <td  *ngIf="s.filliere.codefilliere == 'D.I'">
+                        <button a routerLink="/CompteToEtudiant" title="crée un compte"> 
+                          <img src="assets/menu/images/compte1.jpg" width="40"></button>
+  
+                      </td>
+        
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+   
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+  <div *ngIf="mode == 'tous'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>  Etudiants  </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant"  title="Enregistré nouveou Etudiant"> <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div> 
+       <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="fillieresMDE">
+              <thead class=" text-success">
+                <th>
+                  Matricule 
+              </th>
+              <th>
+                  Nom
+                </th>
+  
+            <th>
+              Prenom
+              </th>
+             
+              
+          
+              
+                <th>
+                  filliere
+                  </th>
+                  <th>
+                    groupe
+                    </th>
+                  <th>
+                    Niveau
+                    </th>
+               
+             <th>
+               Compte
+             </th>
+                
+        
+           
+  
+            </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+                <tr *ngFor= "let  s of etudiants._embedded.etudiants" >
+                   
+                 <td>
+                    {{s.matriculeetudiant}}
+                    </td>
+                    <td>
+                      {{s.nom}}
+                  </td>
+                
+                  <td>
+                    {{s.prenom}}
+                    </td>
+                    <td>
+                      {{s.groupe.nomGrp}}
+                      </td>
+                      <td>
+                        {{s.filliere.codefilliere}}
+                        </td>
+                        <td>
+                          {{s.niveau.code}}
+                          </td>
+                   
+                        
+                      <td >
+                        <button a routerLink="/CompteToEtudiant" title="crée un compte"> 
+                          <img src="assets/menu/images/compte1.jpg" width="40"></button>
+  
+                      </td>
+               
+
+  
+    <div *ngIf="mode == 'DI'">
+      <div class="col-md-12">
+        <div class="card">
+      
+          <h6 class="btn btn-success"> <strong>  Etudiants Filliére DI </strong></h6>
+          <div class="d-flex flex-row-reverse">
+            <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+      </div>
+      
+    
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="DI">
+                  <thead class=" text-success">
+                    <th>
+                      Matricule 
+                  </th>
+                  <th>
+                      Nom
+                    </th>
+      
+                <th>
+                  Prenom
+                  </th>
+                 
+                  
+                <th>
+                  Filliére
+                  </th>
+                  <th>
+                    groupe
+                    </th>
+                  
+                  <th>
+                    niveau
+                    </th>
+                    <th>
+                      Compte
+                      </th>
+                     
+                    
+                    
+           
+    
+                </thead>
+                <tbody>
+            <tr *ngFor= "let  s of DI._embedded.etudiants" >
+                 
+                  <td  *ngIf="s.filliere.codefilliere == 'D.I'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td>
+                    {{s.nom}}
+                </td>
+              
+                <td>
+                  {{s.prenom}}
+                  </td>
+                  <td>
+                    {{s.filliere.codefilliere}}
+                    </td>
+                  <td>
+                    {{s.groupe.nomGrp}}
+                    </td>
+                 
+                      <td>
+                        {{s.niveau.code}}
+                        </td>
+                 
+                      
+                    <td >
+                      <button a routerLink="/CompteToEtudiant" title="crée un compte"> 
+                        <img src="assets/menu/images/compte1.jpg" width="40"></button>
+
+                    </td>                
+               
+                 
+              
+            
+                </tr> 
+                <tr></tr>
+    
+    
+                </tbody>
+              </table>
+        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+  
+<div *ngIf="mode == 'FC'">
+  <div class="col-md-12">
+    <div class="card">
+  
+      <h6 class="btn btn-success"> <strong>  Etudiants Filliére FC </strong></h6>
+      <div class="d-flex flex-row-reverse">
+        <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+  </div>
+  
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="TCM">
+              <thead class=" text-success">
+                <th>
+                  Matricule 
+              </th>
+              <th>
+                  Nom
+                </th>
+  
+            <th>
+              Prenom
+              </th>
+             
+              
+            <th>
+              Filliére
+              </th>
+             
+              
+              <th>
+                niveau
+                </th>
+                <th>
+                  Groupe
+                  </th>
+                 
+                
+                
+              
+              
+    
+
+            </thead>
+            <tbody>
+      <tr *ngFor= "let  s of FC._embedded.etudiants" >
+             
+              <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                  {{s.matriculeetudiant}}
+                </td>
+                <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                  {{s.nom}}
+              </td>
+            
+              <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                {{s.prenom}}
+                </td>
+                <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                  {{s.filliere.codefilliere}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                    {{s.niveau.code}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                      <div class="form-group row" *ngIf="groupes" >
+                      <div class="col-md-8"  >
+                          <select    class="form-control" 
+                          name="nomGrp" #n (change)="getRole (n.value)"  ngModel required>
+                          <option *ngFor ="let r  of groupes._embedded.groupes"
+                          (value)="r.nomGrp">{{r.nomGrp}}</option>
+                          </select>
+                      </div>
+                    </div></td>
+                    <td  *ngIf="s.filliere.codefilliere == 'FC'">
+                      <button class="btn btn-success" (click)="AddEtudToGrp(s)">  Ajouter</button>
+
+                    </td>
+             
+           
+        
+            </tr> 
+            <tr></tr>
+
+
+            </tbody>
+          </table>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div *ngIf="mode == 'BA'">
+  <div class="col-md-12">
+    <div class="card">
+  
+      <h6 class="btn btn-success"> <strong>  Etudiants Filliére BA </strong></h6>
+      <div class="d-flex flex-row-reverse">
+        <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+  </div>
+  
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="BA">
+              <thead class=" text-success">
+                <th>
+                  Matricule 
+              </th>
+              <th>
+                  Nom
+                </th>
+  
+            <th>
+              Prenom
+              </th>
+             
+              
+            <th>
+              Filliére
+              </th>
+             
+              
+              <th>
+                niveau
+                </th>
+                <th>
+                  Groupe
+                  </th>
+      
+
+            </thead>
+            <tbody>
+         
+            <tr *ngFor= "let  s of BA._embedded.etudiants" >
+             
+              <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                  {{s.matriculeetudiant}}
+                </td>
+                <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                  {{s.nom}}
+              </td>
+            
+              <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                {{s.prenom}}
+                </td>
+                <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                  {{s.filliere.codefilliere}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                    {{s.niveau.code}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                      <div class="form-group row" *ngIf="groupes" >
+                      <div class="col-md-8"  >
+                          <select    class="form-control" 
+                          name="nomGrp" #n (change)="getRole (n.value)"  ngModel required>
+                          <option *ngFor ="let r  of groupes._embedded.groupes"
+                          (value)="r.nomGrp">{{r.nomGrp}}</option>
+                          </select>
+                      </div>
+                    </div></td>
+                    <td  *ngIf="s.filliere.codefilliere == 'BA'">
+                      <button class="btn btn-success" (click)="AddEtudToGrp(s)">  Ajouter</button>
+
+                    </td>
+             
+           
+        
+            </tr> 
+            <tr></tr>
+
+
+            </tbody>
+          </table>
+       
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="container-fluid">
+
+
+<div *ngIf="mode == 'RS'">
+  <div class="col-md-12">
+    <div class="card">
+  
+      <h6 class="btn btn-success"> <strong>  Reseaux informatiques et Telecommunications </strong></h6>
+      <div class="d-flex flex-row-reverse">
+        <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+  </div>
+  
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="BA">
+              <thead class=" text-success">
+                <th>
+                  Matricule 
+              </th>
+              <th>
+                  Nom
+                </th>
+  
+            <th>
+              Prenom
+              </th>
+             
+              
+            <th>
+              Filliére
+              </th>
+             
+              
+              <th>
+                niveau
+                </th>
+                <th>
+                  Groupe
+                  </th>
+      
+
+            </thead>
+            <tbody>
+         
+            <tr *ngFor= "let  s of RS._embedded.etudiants" >
+             
+              <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                  {{s.matriculeetudiant}}
+                </td>
+                <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                  {{s.nom}}
+              </td>
+            
+              <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                {{s.prenom}}
+                </td>
+                <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                  {{s.filliere.codefilliere}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                    {{s.niveau.code}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                      <div class="form-group row" *ngIf="groupes" >
+                      <div class="col-md-8"  >
+                          <select    class="form-control" 
+                          name="nomGrp" #n (change)="getRole (n.value)"  ngModel required>
+                          <option *ngFor ="let r  of groupes._embedded.groupes"
+                          (value)="r.nomGrp">{{r.nomGrp}}</option>
+                          </select>
+                      </div>
+                    </div></td>
+                    <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                      <button class="btn btn-success" (click)="AddEtudToGrp(s)">  Ajouter</button>
+
+                    </td>
+             
+           
+        
+            </tr> 
+           
+            </tbody>
+          </table>
+       
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+

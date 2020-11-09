@@ -1,0 +1,47 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <h6 class="btn btn-success">Cree Jury</h6>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="AddJury(f.value)">
+              <div class="row" *ngIf="ListEnseingant">
+                <div class="col-md-10" *ngIf="ListId && ListId.length > 0">
+                  <label class="text-success">Enseignant</label>
+                  <div *ngFor="let j of ListId">
+                    <span>{{ j }}</span>
+                  </div>
+                </div>
+                <div class="col-md-10">
+                  <label class="text-success">Select Enseignant</label>
+                  <select
+                    name="salle_planning"
+                    id="salle"
+                    (change)="AddEnseingant($event.target.value)"
+                    class="form-control"
+                    *ngIf="ListEnseingant"
+                  >
+                    <option
+                      *ngFor="let j of ListEnseingant"
+                      [value]="j.id"
+                    >
+                      {{ j.nomEnseigniant + "  " + j.prenom }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="row" *ngIf="!ListEnseingant">
+                <h2>Pas des enseingant</h2>
+              </div>
+
+              <br />
+              <button type="submit" class="btn btn-success">save</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

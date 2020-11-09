@@ -1,0 +1,563 @@
+
+   <div id="nav" class="col-md-12">
+
+    <ul>
+    
+        <div class="col-md-12 " class="col text-right"> 
+            <button class="btn btn-success" >  Annee 2019-2020 </button> 
+          
+          </div>
+    <li><button (click)="FiliereDI()"   class="btn btn-success"  >	
+        Develeoppment_Informatique</button></li>
+    
+    <li><button (click)="FiliereIG()"   class="btn btn-success" >Informatique du Gestion</button></li>
+    <li><button (click)="FilterParRS()()"   class="btn btn-success" >Reseaux informatiques et Telecommunications
+    </button></li>
+    
+    <li><button (click)="FilterParTous()"  class="btn btn-success" >  Tout les filliere  </button></li>
+  
+    </ul>
+    </div>
+<div *ngIf="mode == 'IG'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>  Etudiants filliere IG </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="IG">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+              <th>
+                Filliére
+                </th>
+               
+                
+                <th>
+                  niveau
+                  </th>
+                  <th>
+                    Groupe
+                    </th>
+                   
+                  
+                  
+                
+                
+  
+  
+              <!-- <th>
+                Modifier
+              </th>
+              <th>
+                Supprimer
+              </th>
+  -->
+           
+           
+  
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of IG._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                      {{s.niveau.code}}
+                      </td>
+                      <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                        <div class="form-group row" *ngIf="groupes" >
+                        <div class="col-md-8"  >
+                            <select    class="form-control" 
+                            name="nomGrp" #n (change)="getRole (n.value)"  ngModel required>
+                            <option *ngFor ="let r  of groupes._embedded.groupes"
+                            (value)="r.nomGrp">{{r.nomGrp}}</option>
+                            </select>
+                        </div>
+                      </div></td>
+                      <td  *ngIf="s.filliere.codefilliere == 'IG'">
+                        <button class="btn btn-success" (click)="AddEtudToGrp(s)">  Ajouter</button>
+  
+                      </td>
+               
+             
+               
+                <!-- <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                  <button (click)="onEdit(s)">
+                    <img src="assets/menu/images/edit.jpg" width="30">
+             -->
+            
+                <!-- </button>
+                </td>
+                <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                    <button (click)="SupprimerFilliere(s)">
+                      <img src="assets/menu/images/images.jpeg" width="30">
+              
+              
+                  </button>
+                  </td>-->
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+            <!-- <nav aria-label="Page navigation example">
+              <ul class="pagination" *ngIf="pages">
+                <li class="page-item"  *ngFor="let p of pages; let i=index"><a class="page-link">
+                  {{i}}
+                </a></li>
+                
+              </ul>
+            </nav> -->
+            
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+    
+  <div *ngIf="mode == 'DI'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>  Etudiants Filliére DI </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="DI">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+              <th>
+                Filliére
+                </th>
+               
+                
+                <th>
+                  niveau
+                  </th>
+                  <th>
+                    Groupe
+                    </th>
+                   
+                  
+                  
+                
+                
+  
+  
+              <!-- <th>
+                Modifier
+              </th>
+              <th>
+                Supprimer
+              </th>
+  -->
+           
+           
+  
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of DI._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'DI'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'DI'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'DI'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'DI'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'DI'">
+                      {{s.niveau.code}}
+                      </td>
+                      <td  *ngIf="s.filliere.codefilliere == 'DI'">
+                        <div class="form-group row" *ngIf="groupes" >
+                        <div class="col-md-8"  >
+                            <select    class="form-control" 
+                            name="nomGrp" #n (change)="getRole (n.value)"  ngModel required>
+                            <option *ngFor ="let r  of groupes._embedded.groupes"
+                            (value)="r.nomGrp">{{r.nomGrp}}</option>
+                            </select>
+                        </div>
+                      </div></td>
+                      <td  *ngIf="s.filliere.codefilliere == 'DI'">
+                        <button class="btn btn-success" (click)="AddEtudToGrp(s)">  Ajouter</button>
+  
+                      </td>
+               
+             
+               
+                <!-- <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                  <button (click)="onEdit(s)">
+                    <img src="assets/menu/images/edit.jpg" width="30">
+             -->
+            
+                <!-- </button>
+                </td>
+                <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                    <button (click)="SupprimerFilliere(s)">
+                      <img src="assets/menu/images/images.jpeg" width="30">
+              
+              
+                  </button>
+                  </td>-->
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+            <!-- <nav aria-label="Page navigation example">
+              <ul class="pagination" *ngIf="pages">
+                <li class="page-item"  *ngFor="let p of pages; let i=index"><a class="page-link">
+                  {{i}}
+                </a></li>
+                
+              </ul>
+            </nav> -->
+            
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  <div *ngIf="mode == 'RS'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>  Etudiants Filliére RS </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="RS">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+              <th>
+                Filliére
+                </th>
+               
+                
+                <th>
+                  niveau
+                  </th>
+                  <th>
+                    Groupe
+                    </th>
+                   
+                  
+                  
+                
+                
+  
+  
+              <!-- <th>
+                Modifier
+              </th>
+              <th>
+                Supprimer
+              </th>
+  -->
+           
+           
+  
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of RS._embedded.etudiants" >
+               
+                <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                    {{s.nom}}
+                </td>
+              
+                <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                  {{s.prenom}}
+                  </td>
+                  <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                      {{s.niveau.code}}
+                      </td>
+                      <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                        <div class="form-group row" *ngIf="groupes" >
+                        <div class="col-md-8"  >
+                            <select    class="form-control" 
+                            name="nomGrp" #n (change)="getRole (n.value)"  ngModel required>
+                            <option *ngFor ="let r  of groupes._embedded.groupes"
+                            (value)="r.nomGrp">{{r.nomGrp}}</option>
+                            </select>
+                        </div>
+                      </div></td>
+                      <td  *ngIf="s.filliere.codefilliere == 'RS'">
+                        <button class="btn btn-success" (click)="AddEtudToGrp(s)">  Ajouter</button>
+  
+                      </td>
+               
+             
+               
+                <!-- <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                  <button (click)="onEdit(s)">
+                    <img src="assets/menu/images/edit.jpg" width="30">
+             -->
+            
+                <!-- </button>
+                </td>
+                <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                    <button (click)="SupprimerFilliere(s)">
+                      <img src="assets/menu/images/images.jpeg" width="30">
+              
+              
+                  </button>
+                  </td>-->
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+            <!-- <nav aria-label="Page navigation example">
+              <ul class="pagination" *ngIf="pages">
+                <li class="page-item"  *ngFor="let p of pages; let i=index"><a class="page-link">
+                  {{i}}
+                </a></li>
+                
+              </ul>
+            </nav> -->
+            
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <div *ngIf="mode == 'tous'">
+    <div class="col-md-12">
+      <div class="card">
+    
+        <h6 class="btn btn-success"> <strong>  Etudiants du Depertement MQI </strong></h6>
+        <div class="d-flex flex-row-reverse">
+          <a routerLink="/SaveEtudiant" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+  
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="etudiants">
+                <thead class=" text-success">
+                  <th>
+                    Matricule 
+                </th>
+                <th>
+                    Nom
+                  </th>
+    
+              <th>
+                Prenom
+                </th>
+               
+                
+              <th>
+                Filliére
+                </th>
+               
+                
+                <th>
+                  niveau
+                  </th>
+                  <th>
+                    Groupe
+                    </th>
+                   
+                  
+                  
+                
+                
+  
+  
+              <!-- <th>
+                Modifier
+              </th>
+              <th>
+                Supprimer
+              </th>
+  -->
+           
+           
+  
+              </thead>
+              <tbody>
+                
+              
+            
+          
+                
+            
+              <tr *ngFor= "let  s of etudiants._embedded.etudiants" >
+               
+                <td *ngIf="s.filliere.codefilliere == 'DI' ||  s.filliere.codefilliere == 'IG'  ||  s.filliere.codefilliere == 'RS' ||  s.filliere.codefilliere == 'SE' ">
+                    {{s.matriculeetudiant}}
+                  </td>
+                  <td *ngIf="s.filliere.codefilliere == 'DI' ||  s.filliere.codefilliere == 'IG'   ||  s.filliere.codefilliere == 'RS' ||  s.filliere.codefilliere == 'SE' ">
+                    {{s.nom}}
+                </td>
+              
+                <td *ngIf="s.filliere.codefilliere == 'DI' ||  s.filliere.codefilliere == 'IG'  ||  s.filliere.codefilliere == 'RS' ||  s.filliere.codefilliere == 'SE' ">
+                  {{s.prenom}}
+                  </td>
+                  <td *ngIf="s.filliere.codefilliere == 'DI' ||  s.filliere.codefilliere == 'IG'   ||  s.filliere.codefilliere == 'RS' ||  s.filliere.codefilliere == 'SE' ">
+                    {{s.filliere.codefilliere}}
+                    </td>
+                    <td *ngIf="s.filliere.codefilliere == 'DI' ||  s.filliere.codefilliere == 'IG'   ||  s.filliere.codefilliere == 'RS' ||  s.filliere.codefilliere == 'SE' ">
+                      {{s.niveau.code}}
+                      </td>
+                      <td *ngIf="s.filliere.codefilliere == 'DI' ||  s.filliere.codefilliere == 'IG'   ||  s.filliere.codefilliere == 'RS' ||  s.filliere.codefilliere == 'SE' ">
+                        <div class="form-group row" *ngIf="groupes" >
+                        <div class="col-md-8"  >
+                            <select    class="form-control" 
+                            name="nomGrp" #n (change)="getRole (n.value)"  ngModel required>
+                            <option *ngFor ="let r  of groupes._embedded.groupes"
+                            (value)="r.nomGrp">{{r.nomGrp}}</option>
+                            </select>
+                        </div>
+                      </div></td>
+                      <td *ngIf="s.filliere.codefilliere == 'DI' ||  s.filliere.codefilliere == 'IG'   ||  s.filliere.codefilliere == 'RS' ||  s.filliere.codefilliere == 'SE' ">
+                        <button class="btn btn-success" (click)="AddEtudToGrp(s)">  Ajouter</button>
+  
+                      </td>
+               
+             
+               
+                <!-- <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                  <button (click)="onEdit(s)">
+                    <img src="assets/menu/images/edit.jpg" width="30">
+             -->
+            
+                <!-- </button>
+                </td>
+                <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                    <button (click)="SupprimerFilliere(s)">
+                      <img src="assets/menu/images/images.jpeg" width="30">
+              
+              
+                  </button>
+                  </td>-->
+          
+              </tr> 
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+            <!-- <nav aria-label="Page navigation example">
+              <ul class="pagination" *ngIf="pages">
+                <li class="page-item"  *ngFor="let p of pages; let i=index"><a class="page-link">
+                  {{i}}
+                </a></li>
+                
+              </ul>
+            </nav> -->
+            
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

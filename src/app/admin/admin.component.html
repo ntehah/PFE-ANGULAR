@@ -1,0 +1,59 @@
+
+<div class="container" style="margin-left: auto ;margin-right: auto">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7  col-md-offest-3">
+        <div class="card">
+        
+          <h6 class="btn btn-success" ><strong>Effectué role a l'utilisateur role  </strong></h6>
+         
+          
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onsaveRoleUser()" class="form-vertical">
+             
+
+              <div class="form-group row" *ngIf="users">
+                <label class="col-md-4 col-form-label  text-success"> 
+                  <strong>username</strong> <abbr>*</abbr>
+
+                </label><div class="col-md-3"  >
+                <select    class="form-control" 
+                name="username" #m (change)="getUsername (m.value)" ngModel >
+                <option *ngFor ="let p  of users._embedded.users"
+                (value)="p.username" >{{p.username}}</option>
+                </select>
+              </div>
+            </div>
+            
+           
+    
+
+            <div class="form-group row" *ngIf="roles">
+              <label class="col-md-4 col-form-label  text-success"> 
+                <strong>Roles</strong> <abbr>*</abbr>
+
+              </label><div class="col-md-3"  >
+              <select    class="form-control" 
+              name="roleName"#n (change)="getRole (n.value)"  ngModel required>
+              <option *ngFor ="let r  of roles._embedded.roles"
+              (value)="r.roleName">{{r.roleName}}</option>
+              </select>
+            </div>
+          </div>
+
+              <div class="center">
+
+              <button  type="submit" class="btn btn-success" >Enregistrer</button>
+
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

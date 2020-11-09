@@ -1,0 +1,267 @@
+
+
+
+<div class="main-content">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="form-group row">
+            <div class="col-md-12 " class="col text-right"> 
+            <button  class="btn btn-success" (click)="onGetSujetEnsegnint()">
+               
+             Propositions Ensegniats  
+            </button>
+            </div>
+            <div class="col-md-12" class="col text-left">
+                <button  class="btn btn-success" (click)="onGetSujetEtudiant()">
+                   
+                 Propositions des  Etudiants  
+                </button>
+               </div></div>
+               <div *ngIf="mode == 'listeEnsegniant'">
+                <div class="col-md-12">
+                    <div class="card">
+                  
+                      <h6 class="btn btn-success">Propositions Ensegniats</h6>
+            <div class="card-body">
+              <div class="table-responsive">
+               
+                <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="sujets">
+                    <thead class=" text-success">
+                        <!-- <th>
+                            ID
+                          </th>
+                        <th >
+                            Annee Universitaire
+                          </th>
+                     -->
+                    <th>
+                        filliere
+                      </th>
+                    
+                      <th>
+                        titre
+                      </th>
+                    <th >
+                        Entreprice_Acceuill 
+                    </th>
+    
+                    <th >
+                        Propose-par
+                    </th>
+                   
+                    <th>
+                      Valider
+                    </th>
+                    
+                    <th>
+                        Refuse
+                      </th>
+                      <th>
+                        Detailles
+                      </th>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor= "let  s of sujets._embedded.sujets" >
+                        <!-- <td *ngIf="s.ensigniant !=null && s.valider == false">
+                        
+                            {{s.id}}
+                               
+                          </td >
+                        <td *ngIf="s.ensigniant !=null && s.valider == false "> 
+                            {{s.paramatrageAnnee.anneeEncours}}
+                          </td> -->
+                        
+                          <td *ngIf="s.ensigniant !=null && s.valider == false">
+                            {{s.fillieres.nomfilliere}}
+                          </td>
+                        
+                      <td *ngIf="s.ensigniant !=null && s.valider == false"> 
+                        {{s.titreSujet}}
+                      </td>
+                     
+                     
+                      <!-- <td *ngIf="s.grp_propose !=null">
+                        {{s.filliere.nomfilliere}}
+                      </td> -->
+                      <td *ngIf="s.ensigniant !=null && s.valider == false">
+                         {{s.entreprise.nomEntreprice}}
+                         <!-- {{s.grp_propose.idGrp}}  -->
+                      </td>
+                     
+                     
+                      <td *ngIf="s.ensigniant !=null && s.valider == false">
+                        
+                        {{s.ensigniant.nomEnseigniant}}
+                           
+                      </td >
+                      <td *ngIf="s.ensigniant !=null && s.valider == false">
+                        <button (click)="onValider(s)">
+                            <img src="assets/menu/images/valid.jpg" width="30">
+                             
+                            
+                        </button>
+                      </td>
+                     
+                      <td  *ngIf="s.ensigniant !=null && s.valider == false">
+                        <button (click)="onRefuse(s)">
+                            <img src="assets/menu/images/ref.jpg" width="30">
+        
+                            
+                        </button>
+                      </td>
+                      <td  *ngIf="s.ensigniant !=null && s.valider == false">
+                        <button (click)="Detaille(s)">
+                            <img src="assets/menu/images/det.jpg" width="30">
+        
+                            
+                        </button>
+                      </td>
+    
+                    </tr>
+                    <tr></tr>
+    
+    
+                    </tbody>
+                  </table>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+    
+
+
+
+
+
+          
+<!-- sujetEtudiant -->
+<div *ngIf="mode ==  'listetEtudiant'">
+    <div class="col-md-12">
+        <div class="card">
+      
+          <h6 class="btn btn-success">Propositions  des Etudiants</h6>
+    <div class="container-fluid">
+      <div class="row">
+        
+        
+            <div class="card-body">
+              <div class="table-responsive">
+             
+                <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="sujets">
+                    <thead class=" text-success" >
+                        <!-- <th>
+                            ID
+                          </th>
+                        <th>
+                            Annee Universitaire
+                          </th>
+                     -->
+                    <th>
+                        filliere
+                      </th>
+                      <th>
+                        titre
+                      </th>
+                    <th >
+                        Entreprise
+                    </th>
+    
+                    <th >
+                        Propose-par
+                    </th>
+                   
+                    <th>
+                      Valider
+                    </th>
+                    
+                    <th>
+                        Refuse
+                      </th>
+                      <th>
+                        Detailles
+                      </th>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor= "let  s of sujets._embedded.sujets" >
+                      
+                        <!-- <td *ngIf="s.groupe !=null  && s.valider == false"> 
+                            {{s.id}}
+                          </td>
+                          <td *ngIf="s.groupe !=null  && s.valider == false"> 
+                            {{s.paramatrageAnnee.anneeEncours}}
+                          </td> -->
+                         
+                          <td *ngIf="s.groupe !=null  && s.valider == false">
+                            {{s.fillieres.nomfilliere}}
+                          </td>
+                     
+                      <td *ngIf="s.groupe !=null && s.valider == false"> 
+                        {{s.titreSujet}}
+                      </td>
+                     
+                       
+                      <td *ngIf="s.groupe !=null && s.valider == false">
+                        {{s.entreprise.nomEntreprice}}
+                       
+                     </td>
+                      
+                      <td *ngIf="s.groupe !=null && s.valider == false">
+                        <!-- {{s.entreprice_acceuil}} -->
+                         {{s.groupe.nomGrp}} 
+                     </td>
+                     
+                     
+                      <td *ngIf="s.groupe !=null && s.valider == false">
+                        <button (click)="onValider(s)" >
+                            <img src="assets/menu/images/valid.jpg" width="30">
+                             
+                            
+                        </button>
+                      </td>
+                     
+                      <td  *ngIf="s.groupe !=null && s.valider == false">
+                        <button (click)="onRefuse(s)">
+                            <img src="assets/menu/images/ref.jpg" width="30">
+        
+                            
+                        </button>
+                      </td>
+                      <td  *ngIf="s.groupe !=null && s.valider == false">
+                        <button (click)="Detaille(s)">
+                            <img src="assets/menu/images/det.jpg" width="30">
+        
+                            
+                        </button>
+                      </td>
+                    </tr>
+                    <tr></tr>
+   
+    
+                    </tbody>
+                  </table>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+    
+
+
+
+
+
+
+
+
+
+
+          

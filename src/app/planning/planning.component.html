@@ -1,0 +1,139 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <h6 class="btn btn-success">Nouveau Planning</h6>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="planningSoutenance(f.value)">
+              <div class="row">
+                <div class="col-md-3">
+                  <label class="text-success">date_Planning </label
+                  ><input
+                    type="date"
+                    class="form-control"
+                    name="date_Planning"
+                    ngModel
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label class="text-success">Heure de debut</label
+                  ><input
+                    type="time"
+                    class="form-control"
+                    name="heureDebut"
+                    ngModel
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label class="text-success">Heure de fin </label
+                  ><input
+                    type="time"
+                    class="form-control"
+                    name="HeureFin"
+                    ngModel
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-10">
+                  <label class="text-success"> Fillier </label>
+                  <select
+                    id="grp_propose"
+                    name="grp_propose"
+                    title="propoe"
+                    (change)="CheckDateSoutenace($event.target.value)"
+                    class="form-control"
+                    *ngIf="filliers"
+                  >
+                    <option *ngFor="let f of filliers" [value]="f.id">
+                      {{ f.nomfilliere }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="row" *ngIf="groupes">
+                <div class="col-md-10">
+                  <label class="text-success"> groupe </label>
+                  <select
+                    id="grp_propose"
+                    name="grp_propose"
+                    title="propoe"
+                    [(ngModel)]="grppropose"
+                    class="form-control"
+                    *ngIf="groupes"
+                  >
+                    <option
+                      *ngFor="let g of groupes"
+                      [ngValue]="g"
+                    >
+                      {{ g.nomGrp }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="row" *ngIf="sujets">
+                <div class="col-md-10">
+                  <label class="text-success"> Sujet </label>
+                  <select
+                    id="grp_propose"
+                    name="grp_propose"
+                    title="propoe"
+                    [(ngModel)]="sujet"
+                    class="form-control"
+                    *ngIf="sujets"
+                  >
+                    <option *ngFor="let s of sujets" [ngValue]="s">
+                      {{ s.id }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-10">
+                  <label class="text-success"> salle_Planning </label>
+                  <select
+                    name="salle_planning"
+                    id="salle"
+                    [(ngModel)]="salle"
+                    class="form-control"
+                    *ngIf="sals"
+                  >
+                    <option *ngFor="let ss of sals" [ngValue]="ss.id">
+                      {{ ss.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-10">
+                  <label class="text-success"> Jury</label>
+
+                  <select
+                    name="salle_planning"
+                    id="salle"
+                    [(ngModel)]="jury"
+                    class="form-control"
+                    *ngIf="jurys"
+                  >
+                    <option *ngFor="let j of jurys" [ngValue]="j">
+                      {{ "Jury" + j.idJury }}
+                      <span *ngFor="let s of j.ensigniants">{{
+                        "  |  " + s.nomEnseigniant + "  " + s.prenom
+                      }}</span>
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <br />
+              <button type="submit" class="btn btn-success">save</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

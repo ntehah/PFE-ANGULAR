@@ -1,0 +1,128 @@
+
+<div class="main-content ">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="col-sm-9">
+              <!-- Search form -->
+              <form class="form-inline d-flex justify-content-left md-form form-sm" #f="ngForm" (ngSubmit)="onChercher(f.value)">
+                <input class="form-control form-control-sm mr-3 w-15" type="text" placeholder="Chercher"
+                       aria-label="Chercher" ngModel name="nomNiveou"  required>
+                <i class="fas fa-search" aria-hidden="true" ></i>
+                <button  class="btn btn-success btn-md  ml-sm-3 " type="submit">Chercher</button>
+              </form>
+            </div>
+            <h1 class="btn btn-success"><strong>niveau</strong></h1>
+            <div class="d-flex flex-row-reverse">
+              <a routerLink="/SaveNiveau" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+  </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-sm"cellpadding="0" cellspacing="5" rules="cols" *ngIf="niveaus">
+                  <thead class=" text-success">
+                    <th>
+                        Annee
+                        </th>
+                   
+                    <th>
+                        Nom
+                      </th>
+  
+                  
+                      <th>
+                        Code
+                      </th>
+                      <th>
+                        filliere
+                        </th>
+                  
+                    
+    
+  
+                  <!-- <th>
+                    Modifier
+                  </th>
+                  <th>
+                    Supprimer
+                  </th> -->
+  
+               
+               
+  
+                  </thead>
+                  <tbody>
+  
+                  <tr *ngFor="let s of niveaus.content" >
+                    <td>
+                        {{s.annee}}
+                      </td>
+                   
+                      <td>
+                        {{s.nomNiveou}}
+                      </td>
+                      <td>
+                        {{s.code}}
+                      </td>
+                  
+                      <td>
+                        {{s.filliere.codefilliere}}
+                      </td>
+                   
+                    <!-- <td>
+                      <button (click)="onEdit(s)">
+                        <img src="assets/menu/images/edit.jpg" width="30">
+                
+                
+                    </button>
+                    </td>
+                    <td>
+                        <button (click)="onEdit(s)">
+                          <img src="assets/menu/images/images.jpeg" width="30">
+                  
+                  
+                      </button>
+                      </td>
+               -->
+                  </tr>
+                  <tr></tr>
+                  <tr>
+
+                    <ul class="cl"  *ngIf="pages" class="nav nav-pills">
+                      <li class="clickable" [ngClass]="i==currentPage?'active':''"*ngFor="let p of pages;let i=index"> 
+                       <a (click)="onPageOuvrage">{{i}}</a>
+                      </li>   </ul>
+                  </tr>
+  
+                  </tbody>
+                </table>
+                <!-- <nav aria-label="Page navigation example">
+                  <ul class="pagination" *ngIf="pages">
+                    <li class="page-item"  *ngFor="let p of pages; let i=index"><a class="page-link">
+                      {{i}}
+                    </a></li>
+                    
+                  </ul>
+                </nav> -->
+                
+              
+              </div>
+
+              <div class="card-footer text-muted">
+                <ul class="nav nav-pills espace">
+                  <li class="nav-item modal-content-clickable"  *ngFor="let page of Pages; let i=index">
+                    <a class="nav-link  decalage"  [ngClass]="i==currentPage?'active':''"  (click)="onPageOuvrage(i)">{{i}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+  
+  
+  
+  
+  

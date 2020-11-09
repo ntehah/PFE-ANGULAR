@@ -1,0 +1,60 @@
+
+<div class="container" style="margin-left: auto ;margin-right: auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7  col-md-offest-3">
+          <div class="card">
+          
+            <h6 class="btn btn-success" ><strong>Ajouté Etudiant a  Groupe </strong></h6>
+           
+            
+            <div class="card-body">
+              <form #f="ngForm" (ngSubmit)="AddEtudToGrp()" class="form-vertical">
+               
+  
+              <div class="form-group row" *ngIf="groupes">
+                <label class="col-md-4 col-form-label  text-success"> 
+                  <strong>Groupe</strong> <abbr>*</abbr>
+  
+                </label><div class="col-md-3"  >
+                <select    class="form-control" 
+                name="nomGrp" #n (change)="getRole (n.value)"  ngModel required>
+                <option *ngFor ="let r  of groupes._embedded.groupes"
+                (value)="r.nomGrp">{{r.nomGrp}}</option>
+                </select>
+              </div>
+            </div>
+  
+                <div class="form-group row" *ngIf="etudiants">
+                  <label class="col-md-4 col-form-label  text-success"> 
+                    <strong>Etudiant</strong> <abbr>*</abbr>
+  
+                  </label><div class="col-md-3"  >
+                  <select    class="form-control" 
+                  name="matriculeetudiant" #m (change)="getUsername (m.value)" ngModel >
+                  <option *ngFor ="let p  of etudiants._embedded.etudiants"
+                  (value)="p.matriculeetudiant" >{{p.matriculeetudiant}}</option>
+                  </select>
+                </div>
+              </div>
+              
+             
+      
+  
+                <div class="center">
+  
+                <button  type="submit" class="btn btn-success" >Enregistrer</button>
+  
+                </div>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  

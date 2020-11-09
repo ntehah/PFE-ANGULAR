@@ -1,0 +1,561 @@
+<div class="panel-body"></div>
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <!-- <div class="text-left mb-9 " >
+                <form  #f="ngForm" (ngSubmit)="onCherche(f.value)">
+                <div >
+
+                    <input type="search" placeholder="rechercher"    >
+                
+             
+                    <button class="btn btn-success" type="submit" >
+                      <i class="fa fa-search"></i>
+                    </button>
+               
+    
+                </div>
+                </form>
+                </div> -->
+
+          <!-- </div> -->
+          <h6 class="btn btn-success">
+            <div class="text-left mb-9">
+              <form #f="ngForm" (ngSubmit)="onCherche(f.value)">
+                <div>
+                  <input type="search" placeholder="rechercher" />
+
+                  <button class="btn btn-info" type="submit">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+            mes Propositions
+          </h6>
+          <div class="text-right mb-9">
+            <a routerLink="/NouvelleProposEnseigniat">
+              <span
+                class="fa fa-plus-circle"
+                style="font-size: 48px; color: green"
+              ></span
+            ></a>
+          </div>
+
+          <!-- <form  #f="ngForm" (ngSubmit)="onCherche(f.value)">
+                
+                    <input type="search" placeholder="rechercher"  class="form-control"  >
+                
+             
+                    <button class="btn btn-success" type="submit" >
+                      <i class="fa fa-search"></i>
+                    </button>
+                    
+                </div>
+                    </form> -->
+
+          <div class="table-responsive">
+            <table
+              class="table table-striped table-bordered table-sm"
+              cellpadding="3"
+              cellspacing="5"
+              rules="cols"
+              *ngIf="sujets"
+            >
+              <thead class="text-success">
+                <!-- <th>
+                            Annee Universitaire
+                          </th> -->
+
+                <th>filliere</th>
+                <th>titre</th>
+                <th>Entrepricse d'acceuill</th>
+
+                <th>Propose-par</th>
+
+                <th>modifier</th>
+
+                <th>supprimer</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let s of sujets">
+                  <!-- <td *ngIf="s.ensigniant !=null && user == s.ensigniant.nomEnseigniant"> 
+                                {{s.paramatrageAnnee.anneeEncours}}
+                              </td>
+                              <td *ngIf="s.grp_propose !=null && user == s.ensigniant.nomEnseigniant"> 
+                                {{s.paramatrageAnnee.anneeEncours}}
+                              </td> -->
+                  <td *ngIf="s.fillieres">
+                    {{ s.fillieres.nomfilliere }}
+                  </td>
+                  <td *ngIf="s.titreSujet">
+                    {{ s.titreSujet }}
+                  </td>
+
+                  <td *ngIf="s.entreprise">
+                    {{ s.entreprise.nomEntreprice }}
+                    <!-- {{s.grp_propose.idGrp}}  -->
+                  </td>
+
+                  <td *ngIf="s.grp_propose">
+                    <!-- {{s.entreprice_acceuil}} -->
+                    {{ s.grp_propose.idGrp }}
+                  </td>
+                  <td *ngIf="s.ensigniant">
+                    {{ s.ensigniant.nomEnseigniant }}
+                  </td>
+                  <td *ngIf="s.id">
+                    <button (click)="onEdit(s)">
+                      <img src="assets/menu/images/edit.jpg" width="30" />
+                    </button>
+                  </td>
+                </tr>
+                <tr></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!--
+              <div class="main-content">
+    
+                  <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-success">
+                                    <h4 class="card-title ">mes Propositions</h4>
+                                    <div class="text-right mb-4">
+                                      <button class="btn btn-success  pull-right "><a routerLink="/user-profile" > <h6 class="card-title ">nouvelle_Sujet</h6> </a></button>
+                                  </div>
+                                  </div>
+                                  <div class="card-body">
+                                      <div class="table-responsive">
+                                          <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols">
+                                              <thead class=" text-primary">
+                                                <th>
+                                                  date
+                                                </th>
+                                                <th>
+                                                    titre
+                                                </th>
+                                                <th>
+                                                    Menmbres
+                                                </th>
+                                                <th>
+                                                  Entreprice_Acceuill
+                                                </th>
+                                                <th>
+                                                  description
+                                                </th>
+                                                <th>
+                                                  Modifier
+                                                </th>
+                                                <th>
+                                                  supprimer
+                                                </th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                       12/4/2020
+                                                    </td>
+                                                    <td >
+                                                        Dakota_Rice
+                                                    </td>
+                                                    <td>
+                                                        Niger
+                                                    </td>
+                                                    <td>
+                                                        Oud-Turnhout
+                                                    </td>
+                                                    <td >
+                                                        $36,738
+                                                    </td>
+                                                    <td >
+                                                      <button type="button" class="btn btn-success">Supprimer</button>
+                                                  </td>
+                                                  <td >
+                                                      <button type="button" class="btn btn-success">Modifier</button>
+                                                  </td>
+                                                </tr>
+                                                <tr> -->
+      <!-- <td>
+                  2
+              </td>
+              <td>
+                  Minerva Hooper
+              </td>
+              <td>
+                  Curaçao
+              </td>
+              <td>
+                  Sinaai-Waas
+              </td>
+              <td class="text-primary">
+                  $23,789
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  3
+              </td>
+              <td>
+                  Sage Rodriguez
+              </td>
+              <td>
+                  Netherlands
+              </td>
+              <td>
+                  Baileux
+              </td>
+              <td class="text-primary">
+                  $56,142
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  4
+              </td>
+              <td>
+                  Philip Chaney
+              </td>
+              <td>
+                  Korea, South
+              </td>
+              <td>
+                  Overland Park
+              </td>
+              <td class="text-primary">
+                  $38,735
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  5
+              </td>
+              <td>
+                  Doris Greene
+              </td>
+              <td>
+                  Malawi
+              </td>
+              <td>
+                  Feldkirchen in Kärnten
+              </td>
+              <td class="text-primary">
+                  $63,542
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  6
+              </td>
+              <td>
+                  Mason Porter
+              </td>
+              <td>
+                  Chile
+              </td>
+              <td>
+                  Gloucester
+              </td>
+              <td class="text-primary">
+                  $78,615
+              </td>
+          </tr> -->
+      <!-- </tbody>
+          </table>
+        </div>
+        </div>
+        </div>
+        </div> -->
+      <!-- <div class="col-md-12">
+                  <div class="card card-plain">
+                      <div class="card-header card-header-danger">
+                          <h4 class="card-title mt-0"> Table on Plain Background</h4>
+                          <p class="card-category"> Here is a subtitle for this table</p>
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive">
+                              <table class="table table-hover">
+                                  <thead class="">
+                                      <th>
+                                          ID
+                                      </th>
+                                      <th>
+                                          Name
+                                      </th>
+                                      <th>
+                                          Country
+                                      </th>
+                                      <th>
+                                          City
+                                      </th>
+                                      <th>
+                                          Salary
+                                      </th>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>
+                                              1
+                                          </td>
+                                          <td>
+                                              Dakota Rice
+                                          </td>
+                                          <td>
+                                              Niger
+                                          </td>
+                                          <td>
+                                              Oud-Turnhout
+                                          </td>
+                                          <td>
+                                              $36,738
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              2
+                                          </td>
+                                          <td>
+                                              Minerva Hooper
+                                          </td>
+                                          <td>
+                                              Curaçao
+                                          </td>
+                                          <td>
+                                              Sinaai-Waas
+                                          </td>
+                                          <td>
+                                              $23,789
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              3
+                                          </td>
+                                          <td>
+                                              Sage Rodriguez
+                                          </td>
+                                          <td>
+                                              Netherlands
+                                          </td>
+                                          <td>
+                                              Baileux
+                                          </td>
+                                          <td>
+                                              $56,142
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              4
+                                          </td>
+                                          <td>
+                                              Philip Chaney
+                                          </td>r
+                                          <td>
+                                              Korea, South
+                                          </td>
+                                          <td>
+                                              Overland Park
+                                          </td>
+                                          <td>
+                                              $38,735
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              5
+                                          </td>
+                                          <td>
+                                              Doris Greene
+                                          </td>
+                                          <td>
+                                              Malawi
+                                          </td>
+                                          <td>
+                                              Feldkirchen in Kärnten
+                                          </td>
+                                          <td>
+                                              $63,542
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              6
+                                          </td>
+                                          <td>
+                                              Mason Porter
+                                          </td>
+                                          <td>
+                                              Chile
+                                          </td>
+                                          <td>
+                                              Gloucester
+                                          </td>
+                                          <td>
+                                              $78,615
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        </div> -->
+
+      <!-- </tbody>
+      </table>
+    </div>
+    </div>
+    </div>
+    </div> -->
+      <!-- <div class="col-md-12">
+              <div class="card card-plain">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title mt-0"> Table on Plain Background</h4>
+                      <p class="card-category"> Here is a subtitle for this table</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead class="">
+                                  <th>
+                                      ID
+                                  </th>
+                                  <th>
+                                      Name
+                                  </th>
+                                  <th>
+                                      Country
+                                  </th>
+                                  <th>
+                                      City
+                                  </th>
+                                  <th>
+                                      Salary
+                                  </th>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>
+                                          1
+                                      </td>
+                                      <td>
+                                          Dakota Rice
+                                      </td>
+                                      <td>
+                                          Niger
+                                      </td>
+                                      <td>
+                                          Oud-Turnhout
+                                      </td>
+                                      <td>
+                                          $36,738
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          2
+                                      </td>
+                                      <td>
+                                          Minerva Hooper
+                                      </td>
+                                      <td>
+                                          Curaçao
+                                      </td>
+                                      <td>
+                                          Sinaai-Waas
+                                      </td>
+                                      <td>
+                                          $23,789
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          3
+                                      </td>
+                                      <td>
+                                          Sage Rodriguez
+                                      </td>
+                                      <td>
+                                          Netherlands
+                                      </td>
+                                      <td>
+                                          Baileux
+                                      </td>
+                                      <td>
+                                          $56,142
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          4
+                                      </td>
+                                      <td>
+                                          Philip Chaney
+                                      </td>r
+                                      <td>
+                                          Korea, South
+                                      </td>
+                                      <td>
+                                          Overland Park
+                                      </td>
+                                      <td>
+                                          $38,735
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          5
+                                      </td>
+                                      <td>
+                                          Doris Greene
+                                      </td>
+                                      <td>
+                                          Malawi
+                                      </td>
+                                      <td>
+                                          Feldkirchen in Kärnten
+                                      </td>
+                                      <td>
+                                          $63,542
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          6
+                                      </td>
+                                      <td>
+                                          Mason Porter
+                                      </td>
+                                      <td>
+                                          Chile
+                                      </td>
+                                      <td>
+                                          Gloucester
+                                      </td>
+                                      <td>
+                                          $78,615
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    </div> -->
+    </div>
+  </div>
+</div>

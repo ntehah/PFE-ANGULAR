@@ -1,0 +1,189 @@
+
+<div class="main-content ">
+
+  <div class="container-fluid">
+    <div>
+      <label>Département</label>
+      <select
+        [(value)]="selected"
+        formControlName="nomEtab"
+        [(ngModel)]="nomEtab"
+        (change)="FilterParDepertement($event.target.value)"
+        required
+      >
+      <option
+                    *ngFor="let  etab of departements._embedded.departements" 
+                    [value]='etab.id'
+                  >{{etab.nomDepartement}}</option>
+      </select>
+     
+</div>
+
+<div>
+  <label>fillieres</label>
+  <select
+    [(value)]="selected"
+    formControlName="nomEtab"
+    [(ngModel)]="nomEtab"
+    (change)="FilterFilliers($event.target.value2)"
+    required
+  >
+  <option
+                *ngFor="let  etab of departements._embedded.departements" 
+                [value]='etab.id'
+              >{{etab.nomDepartement}}</option>
+  </select>
+ 
+</div>
+    <div class="row">
+      <div class="col-md-12">
+       
+          <div class="col-md-12 ">
+          
+     
+           <div *ngIf="mode == 'MQI'">
+            <div class="col-md-12">
+              <div class="card">
+            
+              <h1 class="btn btn-success"><strong>filliéres Depertement MQI</strong></h1>
+  
+          <div class="d-flex flex-row-reverse">
+            <a routerLink="/SaveFillier" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+</div>
+
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="fillieresMQI">
+                <thead class=" text-success">
+                  <th>
+                  numero
+                  </th>
+                  <th>
+                      Code
+                    </th>
+
+                <th>
+                    Nom
+                  </th>
+                 
+                  <th>
+                    Depertement
+                  </th>
+                 
+                  
+  
+             
+
+                </thead>
+                <tbody>
+
+                <tr *ngFor= "let  s of fillieresMQI._embedded.fillieres" >
+                  <td *ngIf="s.departement.codeDepartement == 'M.Q.I' ">
+                      {{s.id}}
+                    </td>
+                    <td *ngIf="s.departement.codeDepartement == 'M.Q.I' ">
+                      {{s.codefilliere}}
+                    </td>
+                    <td *ngIf="s.departement.codeDepartement == 'M.Q.I' ">
+                    {{s.nomfilliere}}
+                  </td>
+                  <td *ngIf="s.departement.codeDepartement == 'M.Q.I' ">
+                    {{s.departement.codeDepartement}}
+                  </td>
+                 
+               
+             
+                </tr>
+                <tr></tr>
+
+
+                </tbody>
+              </table>
+            
+              
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- <div *ngIf="mode == 'MI' "> -->
+
+
+      <div *ngIf="mode ==  'MDE'">
+        <div class="col-md-12">
+            <div class="card">
+          
+              <h6 class="btn btn-success"> <strong>filliéres Depertement MDE </strong></h6>
+              <div class="d-flex flex-row-reverse">
+                <a routerLink="/SaveFillier" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+    
+        <div class="container-fluid">
+          <div class="row">
+            
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="fillieresMDE">
+                      <thead class=" text-success">
+                        <th>
+                        numero
+                        </th>
+                        <th>
+                            Code
+                          </th>
+      
+                      <th>
+                          Nom
+                        </th>
+                       
+                        <th>
+                          Depertement
+                        </th>
+                       
+             
+                   
+      
+                      </thead>
+                      <tbody>
+      
+                      <tr *ngFor= "let  s of fillieresMDE._embedded.fillieres" >
+                        <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                            {{s.id}}
+                          </td>
+                          <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                            {{s.codefilliere}}
+                          </td>
+                          <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                          {{s.nomfilliere}}
+                        </td>
+                        <td *ngIf="s.departement.codeDepartement == 'MED' ">
+                          {{s.departement.codeDepartement}}
+                        </td>
+                   
+                  
+                      </tr> 
+                      <tr></tr>
+      
+      
+                      </tbody>
+                    </table>
+               
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>

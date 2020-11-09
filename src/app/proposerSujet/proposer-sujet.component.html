@@ -1,0 +1,171 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <!-- <div class="card-header card-header-success"> -->
+          <h6 class="btn btn-success">Nouveau Sujet</h6>
+
+          <!-- </div> -->
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onsaveSujetGrp(f.value)">
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label text-success">
+                  <strong>groupe</strong>
+                </label>
+                <div class="col-md-3">
+                  <label
+                    *ngIf="groupeFilter"
+                    name="groupe"
+                    class="col-md-6 col-form-label text-success"
+                    ><strong> {{ groupeFilter.nomGrp }}</strong>
+                  </label>
+                  <!-- <h3 *ngIf="groupe">{{groupe.idGrp}}</h3> -->
+                  <!--<select id="esg" name="groupe" title="propoe" class="form-control" *ngIf="groupes" ngModel>
+                    <option *ngFor="let e  of groupes._embedded.groupes" [ngValue]="groupe">{{e.idGrp}}</option>
+                  </select> -->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label text-success"
+                  ><strong>Titre </strong> <abbr>*</abbr></label
+                >
+                <div class="col-md-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="titreSujet"
+                    placeholder="Entrer Titre du sujet"
+                    #titreSujet="ngModel"
+                    ngModel
+                    required
+                  />
+                  <div
+                    *ngIf="
+                      titreSujet.errors &&
+                      (titreSujet.dirty || titreSujet.touched)
+                    "
+                    class="alert alert-danger"
+                  >
+                    <div [hidden]="!titreSujet.errors.required">
+                      titre Sujet est obligatoire!
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label text-success"
+                  ><strong>Competances requises</strong>
+                </label>
+                <div class="col-md-3">
+                  <select
+                    class="mdb-select md-form"
+                    multiple
+                    placeholder="Entrer les competances requises"
+                    name="competances_requises"
+                    ngModel
+                  >
+                    <option>Python</option>
+                    <option>Spring Boot</option>
+                    <option>Angular</option>
+
+                    <option [ngValue]="1">Autre</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row" >
+                <label class="control-label col-md-2"
+                  ><strong>competances_requises</strong></label
+                >
+                <div class="col-sm-2">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="competances_requises"
+                    name="competances_requises"
+                    ngModel
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row" *ngIf="entreprises">
+                <label class="col-md-2 col-form-label text-success">
+                  <strong>Entreprice acceuil</strong> <abbr>*</abbr>
+                </label>
+                <div class="col-md-3">
+                  <select
+                    class="form-control"
+                    name="entreprise"
+                    ngModel
+                    required
+                  >
+                    <option
+                      *ngFor="let p of entreprises._embedded.entreprises"
+                      [ngValue]="p._links.self.href"
+                    >
+                      {{ p.nomEntreprice }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label text-success"
+                  ><strong>Description</strong> <abbr>*</abbr></label
+                >
+                <div class="col-md-8">
+                  <textarea
+                    type="text"
+                    id="textarea"
+                    name="description"
+                    rows="4"
+                    cols="80"
+                    placeholder="Entrer Titre une description du sujet"
+                    #description="ngModel"
+                    ngModel
+                    required
+                  >
+              <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">
+                <div [hidden]="!description.errors.required">
+                  description est obligatoire!
+                </div>
+              </div>
+            </textarea
+                  >
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label text-success"
+                  ><strong>Resultats attendus</strong> <abbr>*</abbr>
+                </label>
+                <div class="col-md-8">
+                  <textarea
+                    type="text"
+                    placeholder="Quelle resultats attendus"
+                    rows="4"
+                    cols="80"
+                    name="resultats_attendus"
+                    ngModel
+                    required
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="center">
+                <button
+                  [disabled]="!f.form.valid"
+                  type="submit"
+                  class="btn btn-success"
+                >
+                  Enregistrer
+                </button>
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div><label>  aj</label>
+  <table  *ngIf="Etudiants">
+      <th > 
+         id
+      </th>
+      <tr *ngFor= "let  s of Etudiants._embedded.users">
+  <td>
+      {{s.username}
+  </td>
+      </tr>
+  </table>
+  </div> 

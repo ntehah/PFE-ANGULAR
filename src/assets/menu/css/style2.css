@@ -1,0 +1,75 @@
+body {
+background:url(images/5.jpg)  no-repeat center fixed;
+padding: 0;
+margin: 0;
+overflow-y: scroll;
+font-family: Arial;
+font-size:18px;
+}
+#nav
+{
+    background-color:beige;
+}
+#nav_wrapper
+{
+width:966;
+margin:0 auto;
+text-align:left;
+}
+#nav ul{
+list-style-type:none;
+padding:0;
+position:relative;
+}
+#nav ul li{
+display:inline-block;
+background-color:green;
+}
+#nav ul li:hover{
+    background-color:green;
+}
+#nav ul li a,visited{
+color:#FFFFFF;
+display:block;
+padding:10px;
+text-decoration:none;
+
+
+}
+#nav ul li a:hover{
+    background-color:green;
+text-decoration:none;
+}
+#nav ul li:hover ul{
+display:block;
+}
+#nav ul ul{
+display:none;
+position:absolute;
+border:1px solid #0000FF;
+border-top:0;
+}
+#nav ul ul li{
+display:block;
+}
+#nav ul ul li a,visited{
+color:#0000FF;
+}
+#nav ul ul li a,hover{
+color:#0000FF;
+}
+
+input[type="submit"]{
+color:#FFFFFF;
+background:#330099;
+float:left;
+padding:5px;
+font-family:Arial, Helvetica, sans-serif;
+font-weight:bold;
+border-bottom:double;
+}
+.submit:hover
+{
+background:#FF6600;
+color:#FFFFFF;
+}

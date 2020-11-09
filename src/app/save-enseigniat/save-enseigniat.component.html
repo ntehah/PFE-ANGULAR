@@ -1,0 +1,59 @@
+       
+
+
+
+
+
+       
+<div class="container" style="margin-left: auto ;margin-right: auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7  col-md-offest-3">
+          <div class="card">
+          
+            <h6 class="btn btn-success" ><strong>Enregistré Enseigniat   </strong></h6>
+           
+            
+            <div class="card-body">
+              <form #f="ngForm" (ngSubmit)="onsaveEnseigniat(f.value)" class="form-vertical">
+               
+                  <div class="form-group row">
+                      <label class="col-md-4 col-form-label  text-success">Téléphone Enseigniat </label><div class="col-md-8" ><input type="text" class="form-control" name="telEnsegniant" ngModel></div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label  text-success">Nom: </label><div class="col-md-8" ><input type="text" class="form-control" name="nomEnseigniant" ngModel></div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label  text-success">Prenom: </label><div class="col-md-8" ><input type="text" class="form-control" name="prenom" ngModel></div>
+                    </div>
+                 
+                
+                      <div class="form-group row" *ngIf="departements">
+                        <label class="col-md-4 col-form-label  text-success"> 
+                          <strong>depertement</strong> <abbr>*</abbr>
+        
+                        </label><div class="col-md-3"  >
+                        <select    class="form-control" 
+                        name="nomDepartement" ngModel >
+                        <option *ngFor ="let d  of departements._embedded.departements"
+                        (value)="d.nomDepartement" >{{d.nomDepartement}}</option>
+                        </select>
+                      </div>
+                    </div>
+  
+                <div class="center">
+  
+                <button  type="submit" class="btn btn-success" >Enregistrer</button>
+  
+                </div>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

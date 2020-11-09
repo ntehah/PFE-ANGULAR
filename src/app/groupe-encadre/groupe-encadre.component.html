@@ -1,0 +1,84 @@
+
+  
+            
+  <!-- sujetEtudiant -->
+
+  <div class="col-md-12">
+    <div class="card">
+  
+      <h6 class="btn btn-success">Listes des Groupes encadré</h6>
+<div class="container-fluid">
+  <div class="row">
+    
+    
+        <div class="card-body">
+          <div class="table-responsive">
+              
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="sujets">
+                  <thead class=" text-success">
+                      <!-- <th>
+                          ID
+                        </th>
+                      <th>
+                          Année Universitaire
+                        </th> -->
+                  
+                  <th>
+                      filliére
+                    </th>
+                    <th>
+                      titre
+                    </th>
+                 
+  
+                  <th >
+                      Groupe
+                  </th>
+                 
+                 
+                  
+                  </thead>
+                  <tbody>
+                  <tr *ngFor= "let  s of sujets._embedded.sujets" >
+                      <!-- <td *ngIf="s.groupe !=null && s.demendeEncadrant == true && s.encad_acadimique.nomEnseigniant == user"> 
+                          {{s.id}}
+                        </td>
+                        <td *ngIf="s.groupe !=null && s.demendeEncadrant == true && s.encad_acadimique.nomEnseigniant == user" > 
+                          {{s.paramatrageAnnee.anneeEncours}}
+                        </td> -->
+                        
+                        <td *ngIf="s.groupe !=null && s.demendeEncadrant == true && s.encad_acadimique.nomEnseigniant == user">
+                          {{s.fillieres.nomfilliere}}
+                        </td>
+                  
+                    <td *ngIf="s.groupe !=null &&  s.demendeEncadrant == true && s.encad_acadimique.nomEnseigniant == user"> 
+                      {{s.titreSujet}}
+                    </td>
+                   
+                  
+                    
+                    
+                    <td *ngIf="s.groupe !=null && s.demendeEncadrant == true && s.encad_acadimique.nomEnseigniant == user">
+                      <!-- {{s.entreprice_acceuil}} -->
+                       {{s.groupe.idGrp}} 
+                   </td>
+                
+                   
+                   
+               
+                  </tr>
+                  <tr></tr>
+  
+  
+  
+                </tbody>
+              </table>
+              </div>
+              </div>
+              </div>
+            </div>
+          </div>
+     
+
+
+

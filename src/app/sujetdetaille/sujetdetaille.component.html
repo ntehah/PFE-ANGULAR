@@ -1,0 +1,60 @@
+
+<div class="main-content ">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+        
+            <h6 class="btn btn-success">Propositions</h6>
+     
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="3" rules="cols" *ngIf="sujets">
+                  <thead class=" text-success">
+  
+                      <th>
+                        competances
+                        </th>
+  
+                  <th>
+                    Description
+                    </th>
+                 
+                    <th>
+                        Resultats Attendus
+                    </th>
+                    
+                  
+  
+               
+  
+                  </thead>
+                  <tbody>
+  
+                  <tr *ngFor= "let  s of sujets._embedded.sujets" >
+                    <td *ngIf="s.groupe !=null    && s.valider == false  "  >
+                      {{s.competances}}
+                    </td>
+                    <td *ngIf="s.groupe !=null  && s.valider == false" >
+                      {{s.description}}
+                    </td>
+                  
+                    <td *ngIf="s.groupe !=null &&   s.valider == false" >
+                      {{s.resultatsattendus}}
+                    </td>
+                 
+                   
+              
+                  </tr>
+                  <tr></tr>
+  
+  
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  

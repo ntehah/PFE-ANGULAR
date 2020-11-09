@@ -1,0 +1,238 @@
+<div>
+  <div>
+    <meta charset="utf-8" />
+    <div class="wrapper d-flex align-items-stretch">
+      <nav id="sidebar">
+        <div
+          class="img bg-wrap text-center py-4"
+          style="background-image: url(assets/menu/images/iscae.jpg)"
+        >
+          <div class="user-logo">
+            <div
+              class="img"
+              style="background-image: url(assets/menu/images/logo.jpg)"
+            ></div>
+          </div>
+        </div>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+            <a routerLink="/Acceuil"
+              ><span class="fa fa-home mr-3"></span> <strong>Acceuil</strong></a
+            >
+          </li>
+          <!-- <li *ngIf="isAdmin()">
+  <a href="#CompteSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-address-card-o" aria-hidden="true"></i> <strong>Compte</strong></a>
+  <ul class="collapse list-unstyled" id="CompteSubmenu">
+    <li>
+      <a routerLink="/SaveUser"> <strong>Creé un  Compte</strong></a>
+      </li> -->
+          <!-- <li>
+  <a routerLink="/CompteToEtudiant"><strong>Effectuer compte to Etudiant</strong></a>
+  
+</li>
+<li>
+  <a routerLink="/AddComptToEnseigniat"><strong>Effectuer compte to Ensegniant</strong></a>
+</li> -->
+
+          <!-- </ul>
+
+</li> -->
+          <li *ngIf="isEnsigniant()">
+            <a routerLink="/ListeproposeEnseignat"
+              ><span class="fa fa-list"></span>
+              <strong>Mes Propositions</strong></a
+            >
+          </li>
+
+          <li *ngIf="isAdmin()">
+            <a routerLink="/DepotSujetFilliers"
+              ><span class="fa fa-list"></span> <strong>Dépôt Sujet </strong></a
+            >
+          </li>
+          <li *ngIf="isAdmin()">
+            <a routerLink="/SoutenaceFilliers"
+              ><span class="fa fa-list"></span>
+              <strong>Soutenance par Filière</strong></a
+            >
+          </li>
+          <li *ngIf="isAdmin()">
+            <a routerLink="/ListeFilliers"
+              ><span class="fa fa-list"></span> <strong>Filliéres</strong></a
+            >
+          </li>
+          <li *ngIf="isAdmin()">
+            <a routerLink="/ListeDepertement"
+              ><span class="fa fa-list"></span> <strong>Departements</strong></a
+            >
+          </li>
+          <li *ngIf="isAdmin()">
+            <a routerLink="/ListeGroupe"
+              ><span class="fa fa-list"></span> <strong>Groupes</strong></a
+            >
+          </li>
+          <li *ngIf="isAdmin()">
+            <a routerLink="/ListeNiveou"
+              ><span class="fa fa-list"></span> <strong>Niveaux</strong></a
+            >
+          </li>
+
+          <!-- <li *ngIf="isAdmin()">
+        <a href="#CompteSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><strong>Etudiants</strong> </a>
+        <ul class="collapse list-unstyled" id="CompteSubmenu1">
+          <li>
+            <a routerLink="/EtudiantMQI"> <strong>Etudiants M.Q.I</strong></a>
+            </li>
+      <li>
+        <a routerLink="/EtudiantMDE"> <strong>Etudiants M.E.D</strong></a>
+        
+      </li>
+       
+</ul></li> -->
+
+          <!-- <li  *ngIf="isAdmin()">
+  <a routerLink="/essey"><span class="fa fa-list"></span><strong>essey</strong></a>
+  </li> -->
+          <li *ngIf="isAdmin()">
+            <a routerLink="/ListeEtudiant"
+              ><span class="fa fa-list"></span><strong>Etudiant</strong></a
+            >
+          </li>
+          <li *ngIf="isAdmin()">
+            <a routerLink="/ListEnsegniant"
+              ><span class="fa fa-list"></span><strong>Ensegniants</strong></a
+            >
+          </li>
+
+          <li *ngIf="isEtudiant()">
+            <a routerLink="/ProposeEnsegniant"
+              ><span class="fa fa-check-square"></span>
+              <strong>Soumissions Validé</strong></a
+            >
+          </li>
+          <li *ngIf="isEnsigniant()">
+            <a routerLink="/ListeDemandeEncadrant"
+              ><span class="fa fa-list"></span>
+              <strong>Demandes d'encadrant</strong></a
+            >
+          </li>
+          <li *ngIf="isEnsigniant()">
+            <a routerLink="/GroupeEncadreComponent"
+              ><span class="fa fa-list"></span>
+              <strong>Groupes encadre</strong></a
+            >
+          </li>
+
+          <li *ngIf="isEtudiant()">
+            <a routerLink="/ListeproposeEtudiant"
+              ><span class="fa fa-list"></span>
+              <strong>Mes Propositions</strong></a
+            >
+          </li>
+          <li *ngIf="isEtudiant()">
+            <a routerLink="/SoumisionEtudiant"
+              ><span class="fa fa-check-square"></span>
+              <strong>Mes Soumissions</strong></a
+            >
+          </li>
+          <li *ngIf="isCordinateur()">
+            <a routerLink="/LesPropositions"
+              ><span class="fa fa-clone"></span>
+              <strong>Propositions</strong></a
+            >
+          </li>
+          <li *ngIf="isCordinateur()">
+            <a routerLink="/SujetValider"
+              ><span class="fa fa-clone"></span> <strong>Sujets Valides</strong>
+            </a>
+          </li>
+          <li *ngIf="isCordinateur()">
+            <a routerLink="/listeplanning"
+              ><span class="fa fa-calendar"></span>
+              <strong>Plannings de PFE</strong></a
+            >
+          </li>
+
+          <li *ngIf="isAdmin()">
+            <a routerLink="/AddEtudiantToGrp"
+              ><span class="fa fa-list"></span
+              ><strong>AddEtudiantToGrp</strong></a
+            >
+          </li>
+
+          <!-- <li *ngIf="isEtudiant()"> 
+    <a  routerLink="/essey"  ><span class="fa fa-clone"></span>  hh </a>
+    </li> -->
+
+          <!-- <li>
+<a *ngIf= "isAuthenticated()"   routerLink="/login"><span class="fa fa-sign-out mr-3"></span> Connecter</a>
+</li> -->
+        </ul>
+      </nav>
+
+      <div id="content" class="d-flex flex-column">
+        <div class="p-17 p-md-7">
+          <nav
+            class="navbar navbar-expand navbar-light bg-blue topbar mb-4 static-top shadow"
+            style="color: rgb(0, 255, 13)"
+          >
+            <div class="container-fluid">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ml-auto">
+                  <a *ngIf="isAuthenticated()" routerLink="/login"
+                    ><span
+                      class="fa fa-sign-in mr-3"
+                      style="color: green"
+                    ></span
+                    ><strong style="color: green"> Connecter</strong></a
+                  >
+                  <!-- 
+<a    (click)= "LogOut()"><span class="fa fa-sign-out mr-3"></span> <strong>Deconnecter </strong></a>
+</div> -->
+                  <!-- <a class="navbar-brand" href="/">
+  <div class="logo-image">
+        <img src="assets/menu/images/header.jpg" width="400"  height="30" class="img-fluid">
+  </div>
+</a> -->
+
+                  <!-- <img src="assets/menu/images/header.jpg" width="400"  height="30"> -->
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      id="navbarDropdownMenuLink-4"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="fa fa-user-graduate" style="font-size: 48px">
+                        <!-- <img src="assets/menu/images/logo.jpg" width="50"> -->
+                      </i>
+                    </a>
+
+                    <div
+                      *ngIf="isAuthenticated()"
+                      class="dropdown-menu dropdown-menu-right dropdown-info"
+                      aria-labelledby="navbarDropdownMenuLink-4"
+                    >
+                      <a class="dropdown-item" routerLink="/login"> compts</a>
+                      <a class="dropdown-item" (click)="LogOut()"
+                        >Decoonecter</a
+                      >
+                    </div>
+                  </li>
+
+                  <!-- <img src="assets/menu/images/logok.jpg" width="40" id="icon" alt="User Icon"> -->
+                  <!-- <li class="nav-item">
+ <a class="nav-link" href="#">Deconecter</a>
+</li> -->
+                  <!-- <li><a  *ngIf= "isAuthenticated()"  (click)= "LogOut()"><span class="fa fa-sign-out mr-3"></span> Deconnecter</a>
+ </li> -->
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <router-outlet> </router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

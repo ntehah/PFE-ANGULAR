@@ -1,0 +1,74 @@
+<div class="container" style="margin-left: auto ;margin-right: auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7  col-md-offest-3">
+          <div class="card">
+          
+            <h6 class="btn btn-success" ><strong>Depot Sujet    </strong></h6>
+           
+            
+            <div class="card-body">
+              <form #f="ngForm" (ngSubmit)="SavefillierePlaning(f.value)" class="form-vertical">
+                <div   class="form-group row" *ngIf="departements">
+                  <label class="col-md-4 col-form-label  text-success"> 
+                    <strong>Departement</strong> <abbr>*</abbr>
+              
+                  </label><div class="col-md-4"  >
+                <div class="input-container">
+                  <select class="form-control"  name="departement" ngModel (change)="getdepartements($event.target.value)">
+                    <option *ngFor="let w of departements._embedded.departements" [value]="w.id">{{w.nomDepartement}}</option>
+                  </select></div></div></div>
+              
+                  <br>
+                  <div  class="form-group row"  *ngIf="moughataas">
+                <label class="col-md-4 col-form-label  text-success"> 
+                  <strong>filliere</strong> <abbr>*</abbr>
+              
+                </label><div class="col-md-4"  >
+               
+                <div class="input-container">
+                  <select class="form-control" name="groupe" ngModel   (change)="setSelectedMoughataa($event.target.value)">
+                    <option *ngFor="let m of moughataas" [value]="m.nomfilliere">{{m.nomfilliere}}</option>
+                  </select>
+                </div>
+                </div></div>
+                 <div class="form-group row" *ngIf="paramatrageAnnees">
+                  <label class="col-md-4 col-form-label  text-success"> 
+                    <strong>Année en cours</strong> <abbr>*</abbr>
+  
+                  </label><div class="col-md-3"  >
+                  <label    class="form-control" 
+                   >
+                  <option *ngFor ="let d  of paramatrageAnnees._embedded.paramatrageAnnees"
+                  (value)="d.anneeEncours" >{{d.anneeEncours}}</option>
+                  </label>
+                </div>
+              </div> 
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label  text-success">Date debut : </label><div class="col-md-8" ><input type="date"  min ="2019-01-01" class="form-control" name="debutperiodeProposesujet" ngModel></div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label  text-success">Date fin: </label><div class="col-md-8" ><input type="date"    class="form-control" name="finperiodeProposesujet" ngModel></div>
+                    </div>
+              
+                   
+  
+                <div class="center">
+  
+                <button  type="submit" class="btn btn-success" >Enregistré</button>
+  
+                </div>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+  
+  

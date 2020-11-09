@@ -1,0 +1,76 @@
+
+
+
+
+  <!-- EffectCompt -->
+  <div class="form-group row" >
+
+  </div>
+  <div class="container" style="margin-left: auto ;margin-right: auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7  col-md-offest-3">
+          <div class="card">
+          
+            <h6 class="btn btn-success" ><strong>Effectué un  Compte au  Etudiant  </strong></h6>
+           
+            
+            <div class="card-body">
+              <form #f="ngForm" (ngSubmit)="onEffectComnptEtudiant()" class="form-vertical">
+               
+  
+                <div class="form-group row" *ngIf="users">
+                  <label class="col-md-4 col-form-label  text-success"> 
+                    <strong>Compte</strong> <abbr>*</abbr>
+  
+                  </label><div class="col-md-3"  >
+                  <select    class="form-control" 
+                  name="username" #m (change)="getUsername (m.value)" ngModel >
+                  <option *ngFor ="let p  of users._embedded.users"
+                  (value)="p.username" >{{p.username}}</option>
+                  </select>
+                </div>
+              </div>
+              
+             
+      
+  
+              <div class="form-group row" *ngIf="etudiants">
+                <label class="col-md-4 col-form-label  text-success"> 
+                  <strong>Matricule Etudiant</strong> <abbr>*</abbr>
+  
+                </label><div class="col-md-3"  >
+                <select    class="form-control" 
+                name="matriculeetudiant"#n (change)="getRole (n.value)"  ngModel required>
+                <option *ngFor ="let e  of etudiants._embedded.etudiants"
+                (value)="e.matriculeetudiant">{{e.matriculeetudiant}}</option>
+                </select>
+              </div>
+              <div class="d-flex flex-row-reverse">
+                <a routerLink="/SaveUser" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+    </div>
+            </div>
+  
+                <div class="center">
+  
+                <button  type="submit" class="btn btn-success" >Enregistrer</button>
+  
+                </div>
+                <div class="clearfix"></div>
+                <br><br>
+                <div class="col-md-12 " class="col text-center"> 
+                  <a class="btn btn-success" routerLink="/donnerRole" >Effectuée Role au utilisateur
+                  </a >
+                  
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  

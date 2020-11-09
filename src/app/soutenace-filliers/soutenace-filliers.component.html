@@ -1,0 +1,94 @@
+       
+
+
+
+
+
+       
+<div class="container" style="margin-left: auto ;margin-right: auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7  col-md-offest-3">
+          <div class="card">
+          
+            <h6 class="btn btn-success" ><strong>Soutenace filliere  Prévu  </strong></h6>
+           
+            
+            <div class="card-body">
+              <form #f="ngForm" (ngSubmit)="SavefillierePlaningSoutenace(f.value)" class="form-vertical">
+                <div   class="form-group row" *ngIf="departements">
+                  <label class="col-md-4 col-form-label  text-success"> 
+                    <strong>Departement</strong> <abbr>*</abbr>
+              
+                  </label><div class="col-md-4"  >
+                <div class="input-container">
+                  <select class="form-control"  name="departement" ngModel (change)="getdepartements($event.target.value)">
+                    <option *ngFor="let w of departements._embedded.departements" [value]="w.id">{{w.nomDepartement}}</option>
+                  </select></div></div></div>
+              
+                  <br>
+                  <div  class="form-group row"  *ngIf="moughataas">
+                <label class="col-md-4 col-form-label  text-success"> 
+                  <strong>filliere</strong> <abbr>*</abbr>
+              
+                </label><div class="col-md-4"  >
+               
+                <div class="input-container">
+                  <select class="form-control" name="filliere" ngModel   (change)="setSelectedMoughataa($event.target.value)">
+                    <option *ngFor="let m of moughataas" [value]="m.nomfilliere">{{m.nomfilliere}}</option>
+                  </select>
+                </div>
+                </div></div>
+              
+        
+           
+                <div class="form-group row" >
+                  <label class="col-md-4 col-form-label  text-success"> 
+                    <strong>Date  Debut  </strong> 
+    
+                  </label><div class="col-md-6"  >
+                    <div class="form-group row">
+                      <div class="col-md-8" ><input type="date" class="form-control" name="dateSoutence" ngModel></div>
+                    </div>
+                </div>
+                <!-- <div class="d-flex flex-row-reverse">
+                  <a routerLink="/SavePlaningSoutenace" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+      </div> -->
+              </div>
+
+               
+        
+            <div class="form-group row" >
+              <label class="col-md-4 col-form-label  text-success"> 
+                <strong>Date  Fin  </strong> 
+
+              </label><div class="col-md-6"  >
+                <div class="form-group row">
+                  <div class="col-md-8" ><input type="date" class="form-control" name="findateSoutence" ngModel></div>
+                </div>
+            </div>
+            <!-- <div class="d-flex flex-row-reverse">
+              <a routerLink="/SavePlaningSoutenace" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
+  </div> -->
+          </div>
+                   
+  
+                <div class="center">
+  
+                <button  type="submit" class="btn btn-success" >Enregistré</button>
+  
+                </div>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+  
+  

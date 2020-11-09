@@ -1,0 +1,75 @@
+<div class="container" style="margin-left: auto ;margin-right: auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-11  col-md-offest-3">
+          <div class="card">
+        
+            <h6 class="btn btn-success" ><strong>Modifier Sujet</strong></h6>
+  
+            <div class="card-body" *ngIf="currentSujet">
+            <form #f="ngForm" (ngSubmit)="onUpdate(f.value)" class="form-vertical">
+               
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label  text-success"><strong>Titre sujet </strong></label>
+                  <div class="col-md-3" ><input type="text" class="form-control" name="titreSujet" placeholder="Entrer Titre du sujet"  ngModel [(ngModel)] ="currentSujet.titreSujet">
+                
+            
+  
+              </div>
+  
+  
+  
+</div>
+<div class="form-group row">
+  <label class="col-md-2 col-form-label  text-success">
+    <strong>Competances requises</strong> </label><div class="col-md-3" >
+
+   <select class="mdb-select md-form" multiple placeholder="Entrer les competances requises"  name="competances_requises"  ngModel  [(ngModel)] ="currentSujet.competances_requises">
+                
+ <option>Python </option>
+ <option>Spring Boot </option>
+ <option>Angular </option>
+
+ <option  [ngValue]="1">Autre</option>
+
+ </select></div>
+</div>
+
+
+
+     <div class="form-group row" >
+       <label class="col-md-2 col-form-label  text-success"> <strong>Entreprice acceuil</strong> <abbr>*</abbr>
+
+       </label><div class="col-md-3"  >
+       <select    class="form-control" name="entreprise"  ngModel [(ngModel)] ="currentSujet.entreprise">
+                
+       <option *ngFor ="let p  of entreprises._embedded.entreprises"
+        [ngValue]="p" >{{p.nomEntreprice}}</option>
+       </select>
+     </div>
+   </div>
+
+  
+   <div class="form-group row">
+     <label class="col-md-2 col-form-label  text-success"><strong>Description</strong>  <abbr>*</abbr></label><div class="col-md-8" ><textarea type="text"  id ="textarea" name="description" rows="4" cols="80" placeholder="Entrer Titre une description du sujet" ngModel  [(ngModel)] ="currentSujet.description">
+ 
+ </textarea></div>
+   </div>
+   <div class="form-group row">
+     <label class="col-md-2 col-form-label  text-success"><strong>Resultats attendus</strong> <abbr>*</abbr> </label><div class="col-md-8" ><textarea type="text"  placeholder="Quelle resultats attendus"  rows="4" cols="80" name="resultats_attendus" ngModel  [(ngModel)] ="currentSujet.resultats_attendus"></textarea></div>
+   </div>
+  
+                <div class="center">
+  
+                <button  type="submit" class="btn btn-success" >Modifier</button>
+  
+                </div>
+                <div class="clearfix"></div>
+              </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+</div>

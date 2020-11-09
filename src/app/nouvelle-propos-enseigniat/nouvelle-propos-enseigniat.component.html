@@ -1,0 +1,124 @@
+<br>
+
+<div class="container" style="margin-left: auto ;margin-right: auto">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10  col-md-offest-3">
+        <div class="card">
+          <!-- <div class="card-header card-header-success"> -->
+          <h6 class="btn btn-success" ><strong>Nouveau Sujet</strong></h6>
+         
+          <!-- </div> -->
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onsaveSujetEnseigniant(f.value)" class="form-vertical">
+              <div class="form-group row">
+                <label class="col-md-col-form-label  text-success">
+                   <strong>Enseigniant proposer </strong> <abbr>*</abbr></label><div class="col-md-3" >
+               
+                <label *ngIf="user" class="col-md-6 col-form-label  text-success"
+                 name ="ensigniant">
+                  <strong> {{user}}</strong></label>
+              </div>
+
+            </div>
+            <!-- <div class="form-group row">
+              <label class="col-md-2 col-form-label  text-success"><strong>Titre sujet </strong> <abbr>*</abbr>
+              </label><div class="col-md-3" ><input type="text" class="form-control" name="titreSujet" placeholder="Entrer Titre du sujet" #titreSujet="ngModel" ngModel >
+                
+          </div>
+
+          </div> -->
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label  text-success"><strong>Titre sujet </strong> <abbr>*</abbr>
+                </label><div class="col-md-3" ><input type="text" class="form-control" name="titreSujet" placeholder="Entrer Titre du sujet" #titreSujet="ngModel" ngModel required>
+              <div *ngIf="titreSujet.errors && (titreSujet.dirty || titreSujet.touched)" class="alert alert-danger">
+                <div [hidden]="!titreSujet.errors.required">
+                  titre Sujet est obligatoire!
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+
+
+           <div class="form-group row">
+             <label class="col-md-2 col-form-label  text-success"><strong>Competances requises</strong> </label>
+             <div class="col-md-3" >
+
+              <select class="form-control"  placeholder="Entrer les competances requises" 
+               name="competances"  ngModel>
+            <option>Python </option>
+            <option>Spring Boot </option>
+            <option>Angular </option>
+
+            </select></div>
+          </div>
+         
+
+
+                <div class="form-group row" *ngIf="entreprises">
+                  <label class="col-md-2 col-form-label  text-success"> 
+                    <strong>Entreprice acceuil</strong> <abbr>*</abbr>
+
+                  </label><div class="col-md-3"  >
+                  <select    class="form-control" 
+                  name="entreprise"  ngModel required>
+                  <option *ngFor ="let p  of entreprises._embedded.entreprises"
+                   [ngValue]=" p._links.self.href">{{p.nomEntreprice}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label  text-success"><strong>Nombre etudiant(max)</strong>
+                </label><div class="col-md-3" ><select  id="max" name="nbrEtudiantMax" title="max"
+                  [(ngModel)]="max" class="form-control">
+
+                <option>2 </option>
+                <option>3 </option>
+                <option>4</option>
+
+                </select></div>
+            </div>
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label  text-success"><strong>Nombre etudiant(min)</strong>
+                </label><div class="col-md-3" ><select id="min" name="nbrEtudiantMin" title="min"
+                  [(ngModel)]="min" class="form-control" >
+                  <option>1 </option>
+                  <option>2 </option>
+
+
+                </select></div>
+               </div>
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label  text-success"><strong>Description</strong>  <abbr>*</abbr>
+                </label><div class="col-md-8" ><textarea type="text"  id ="textarea" name="description" rows="4" cols="80" placeholder="Entrer Titre une description du sujet"   #description="ngModel" ngModel required>
+              <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">
+                <div [hidden]="!description.errors.required">
+                  description est obligatoire!
+                </div>
+              </div>
+            </textarea></div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label  text-success"><strong>Resultats attendus</strong> <abbr>*</abbr>
+                 </label><div class="col-md-8" ><textarea type="text"  placeholder="Quelle resultats attendus"  rows="4" cols="80" name="resultatsattendus" ngModel required></textarea></div>
+              </div>
+
+              <div class="center">
+
+              <button [disabled]="!f.form.valid" type="submit" class="btn btn-success" >Enregistrer</button>
+
+              </div>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

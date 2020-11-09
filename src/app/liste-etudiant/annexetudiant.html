@@ -1,0 +1,38 @@
+
+<div class="main-content ">
+  <div   class="form-group row">
+    <div class="col-md-6"  >
+  <div   class="form-group row" *ngIf="departements">
+    <label class="col-md-3 col-form-label  text-success"> 
+      <strong>Departement</strong> 
+
+    </label><div class="col-md-4"  >
+  <div class="input-container">
+    <select class="form-control"  name="departement" ngModel (change)="getdepartements($event.target.value)">
+      <option *ngFor="let w of departements._embedded.departements" [value]="w.id">{{w.codeDepartement}}</option>
+    </select></div></div></div></div>
+
+    <br>
+    <div class="col-md-2"  >
+    <div  class="form-group row"  *ngIf="moughataas">
+  <label class="col-md-4 col-form-label  text-success"> 
+    <strong>filliere</strong> <abbr>*</abbr>
+
+  </label><div class="col-md-6"  >
+ 
+  <div class="input-container">
+    <select class="form-control" name="groupe" ngModel   (change)="getFillierNiveou($event.target.value)">
+      <option *ngFor="let m of moughataas" [value]="m.id">{{m.codefilliere}}</option>
+    </select>
+  </div>
+  </div></div>
+  <div   class="form-group row" *ngIf="nieouGrp">
+    <label class="col-md-4 col-form-label  text-success"> 
+      <strong>Niveau</strong> <abbr>*</abbr>
+
+    </label><div class="col-md-6"  >
+  <div class="input-container">
+    <select class="form-control"  name="niveau" ngModel (change)="setSelectedNiveou($event.target.value)">
+      <option *ngFor="let w of nieouGrp" [value]="w.id">{{w.nomNiveou}}</option>
+    </select></div></div></div>
+</div></div>

@@ -1,0 +1,120 @@
+
+<div class="main-content">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <h6 class="btn btn-success">Soumission</h6>
+  
+       
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols"  *ngIf="sujets">
+                  <thead class=" text-success" >
+                    <!-- <th>
+                      ID
+                      </th>
+                    <th>
+                      Année Universitaire
+                    </th>
+               -->
+              <th>
+                  Filliére
+                </th>
+                <th>
+                  titre
+                </th>
+              <th >
+                  Entreprise d'acceuill 
+              </th>
+  
+              <th  >
+                  Proposé par
+              </th>
+              
+              <th >
+                Encadrant
+            </th>
+           
+          
+              </thead>
+              <tbody>
+              <tr *ngFor= "let  s of sujets._embedded.sujets" >
+                <!-- <td *ngIf="s.groupe !=null && s.valider == true  &&  groupeFilter.idGrp == s.groupe.idGrp"> 
+                    {{s.id}}
+                  </td>
+                  <td *ngIf="s.groupe !=null && s.valider == true  &&  groupeFilter.idGrp == s.groupe.idGrp"> 
+                      {{s.paramatrageAnnee.anneeEncours}}
+                    </td>
+                    -->
+                    <td *ngIf="s.groupe !=null && s.valider == true &&  groupeFilter.nomGrp == s.groupe.nomGrp">
+                      {{s.fillieres.nomfilliere}}
+                    </td>
+                  
+                <td *ngIf="s.groupe !=null && s.valider == true &&  groupeFilter.nomGrp == s.groupe.nomGrp"> 
+                  {{s.titreSujet}}
+                </td>
+                
+               
+                <!-- <td *ngIf="s.grp_propose !=null">
+                  {{s.filliere.nomfilliere}}
+                </td> -->
+                <td *ngIf="s.groupe !=null && s.valider == true &&  groupeFilter.nomGrp == s.groupe.nomGrp">
+                   {{s.entreprise.nomEntreprice}}
+                   <!-- {{s.grp_propose.idGrp}}  -->
+                </td>
+             
+                
+            
+                <td *ngIf="s.groupe !=null && s.valider == true &&  groupeFilter.nomGrp == s.groupe.nomGrp">
+                  
+                    {{s.groupe.nomGrp}}         
+                     
+              
+                
+                  
+                </td>
+                <td *ngIf="s.groupe !=null && s.valider == true &&  groupeFilter.nomGrp == s.groupe.nomGrp &&  s.demendeEncadrant == false">
+                  
+                <div class="form-group row" *ngIf="ensigniants">
+                <div class="col-md-12"  >
+                    <select    class="form-control" 
+                    name="ensigniant" #n (change)="getNomEnseigiant (n.value)"  ngModel >
+                    <option *ngFor ="let p  of ensigniants._embedded.ensigniants"
+                     value="{{p.nomEnseigniant}}" >{{p.nomEnseigniant}}</option>
+                    </select>
+                </div>
+              </div>
+              
+            </td>
+
+                
+              <td *ngIf="s.groupe !=null  && s.valider == true &&  groupeFilter.nomGrp == s.groupe.nomGrp &&  s.demendeEncadrant == true">
+                
+              
+              <!-- <h6 style="color : red"> -->
+                  Dr. {{s.encad_acadimique.nomEnseigniant}} 
+                   <!-- accepté   Votre demende d'encadrant   </h6> -->
+              </td>
+              <td *ngIf="s.groupe !=null && s.valider == true &&  groupeFilter.nomGrp == s.groupe.nomGrp &&  s.demendeEncadrant == false">
+                
+
+                <button class="btn btn-success" (click)="DemandeEncadrantSujet(s)">  envoyer</button>
+              </td>
+              </tr>
+              <tr></tr>
+  
+  
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+
+
+
+

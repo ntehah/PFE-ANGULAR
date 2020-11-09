@@ -1,0 +1,166 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <!-- <div class="card-header card-header-success"> -->
+          <div class="card-header flex-col">
+            <div class="text-right mb-9">
+              <button
+                type="button"
+                routerLink="/planning"
+                *ngIf="isCordinateur()"
+                class="btn btn-primary"
+              >
+                Nouveau soutenance
+              </button>
+            </div>
+            <div class="text-right mb-9">
+              <button
+                type="button"
+                routerLink="/addjury"
+                *ngIf="isCordinateur()"
+                class="btn btn-secondary"
+              >
+                Cree un jury
+              </button>
+            </div>
+          </div>
+
+          <h6 class="btn btn-success">Planning Des Soutenance</h6>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table
+                class="table table-striped table-bordered table-sm"
+                cellpadding="3"
+                cellspacing="5"
+                rules="cols"
+                *ngIf="soutenaces"
+              >
+                <thead class="text-success">
+                  <th>Annee Universitaire</th>
+                  <th>Date soutenance</th>
+                  <th>Filliere</th>
+                  <th>groupe</th>
+                  <th>Salle</th>
+                  <th>Sujet</th>
+                  <th>Debut</th>
+                  <th>Fin</th>
+                  <th>Jury</th>
+                  <th>Soutenu</th>
+                  <th>PV</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let s of soutenaces">
+                    <td>2020 - 2021</td>
+                    <td *ngIf="s.dateSoutence">
+                      {{ s.dateSoutence | date: "dd/MM/yyyy"}}
+                    </td>
+                    <td *ngIf="s.filliere">
+                      {{ s.filliere.codefilliere }}
+                    </td>
+                    <td *ngIf="s.groupe">
+                      {{ s.groupe.nomGrp }}
+                    </td>
+                    <td *ngIf="s.salle">
+                      {{ s.salle }}
+                    </td>
+                    <td *ngIf="s.salle">
+                        {{ s.salle }}
+                      </td>
+                      <td *ngIf="s.salle">
+                        {{ s.heure_debut }}
+                      </td>
+                      <td *ngIf="s.salle">
+                        {{ s.heure_fin }}
+                      </td>
+
+                    <td *ngIf="s.jury_planning">
+                      <div *ngFor="let e of s.jury_planning.ensigniants">
+                        <span>{{ e.nomEnseigniant + " " + e.prenom }}</span
+                        ><br />
+                      </div>
+                    </td>
+                    <td *ngIf="s">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#exampleModalCenter"
+                        (click)="onUpdate(s.id)"
+                        *ngIf="!s.soutene"
+                      >
+                        Soutenu
+                      </button>
+                    </td>
+                    <td *ngIf="s">
+                      <button
+                        type="button"
+                        class="btn btn-success"
+                        (click)="savetoPdf(s)"
+                        *ngIf="s.soutene"
+                      >
+                        Generate PV
+                      </button>
+                    </td>
+                  </tr>
+                  <tr></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+  class="modal fade"
+  id="exampleModalCenter"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Note</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label class="col-md-4 col-form-label text-success">
+          <strong>Note</strong> <abbr>*</abbr>
+        </label>
+        <div class="col-md-12">
+          <input type="text" name="note" [(ngModel)]="note" />
+        </div>
+        <label class="col-md-4 col-form-label text-success">
+            <strong>Mention</strong> <abbr>*</abbr>
+          </label>
+          <div class="col-md-12">
+            <input type="text" name="mention" [(ngModel)]="mention" />
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="SaveNoteAndMention()"
+        >
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>

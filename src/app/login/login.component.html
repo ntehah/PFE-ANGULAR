@@ -1,0 +1,35 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    
+    
+    <div class="container" style="background-image: url('assets/images/iscae.jpg');">
+      
+    <div class="fadeIn first">
+      <img src="assets/menu/images/login1.jpg" width="20" leight="20" id="icon" alt="User Icon" />
+    </div>
+
+  
+    <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+
+
+
+
+
+      <div class="wrap-input100 validate-input" data-validate = "Enter username"></div>
+      
+    
+     <input type="text" id="login" class="fadeIn second" name="username" placeholder="username" ngModel>
+
+     
+      <input type="password" id="password" class="fadeIn second" name="password" placeholder="mot de passe" ngModel>
+     
+     
+      <input type="submit" class="fadeIn fourth" value="ok">
+      
+    </form>
+
+    
+
+  </div>
+</div></div>
+

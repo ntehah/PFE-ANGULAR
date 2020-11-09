@@ -1,0 +1,61 @@
+       
+
+
+
+
+
+       
+<div class="container" style="margin-left: auto ;margin-right: auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7  col-md-offest-3">
+          <div class="card">
+          
+            <h6 class="btn btn-success" ><strong>Enregistré Niveau    </strong></h6>
+           
+            
+            <div class="card-body">
+              <form #f="ngForm" (ngSubmit)="onsaveNiveau(f.value)" class="form-vertical">
+               
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label  text-success">niveau: </label><div class="col-md-8" ><input type="text" class="form-control" name="nomNiveou" ngModel></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label  text-success">code: </label><div class="col-md-8" ><input type="text" class="form-control" name="code" ngModel></div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-md-4 col-form-label  text-success">Annee: </label><div class="col-md-8" ><input type="text" class="form-control" name="annee" ngModel></div>
+                      </div>
+       
+                      <div class="form-group row" *ngIf="fillieres">
+                        <label class="col-md-4 col-form-label  text-success"> 
+                          <strong>Filliére</strong> <abbr>*</abbr>
+        
+                        </label><div class="col-md-3"  >
+                        <select    class="form-control" 
+                        name="nomfilliere"  ngModel >
+                        <option *ngFor ="let d  of fillieres._embedded.fillieres"
+                        (value)="d.nomfilliere" >{{d.nomfilliere}}</option>
+                        </select>
+                      </div>
+                    </div> 
+  
+                <div class="center">
+  
+                <button  type="submit" class="btn btn-success" >Enregistrer</button>
+  
+                </div>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+  
+  

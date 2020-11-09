@@ -1,0 +1,70 @@
+       
+
+
+
+
+
+       
+<div class="container" style="margin-left: auto ;margin-right: auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7  col-md-offest-3">
+          <div class="card">
+          
+            <h6 class="btn btn-success" ><strong>Enregistré Groupe    </strong></h6>
+           
+            
+            <div class="card-body">
+              <form #f="ngForm" (ngSubmit)="onsaveGroup(f.value)" class="form-vertical">
+               
+                    <div class="form-group row">
+                      <label class="col-md-4 col-form-label  text-success">Nom du Groupe: </label><div class="col-md-8" ><input type="text" class="form-control" name="nomGrp" ngModel></div>
+                    </div>
+
+                    <div   class="form-group row" *ngIf="fillieres">
+                      <label class="col-md-4 col-form-label  text-success"> 
+                        <strong>Filliére</strong> <abbr>*</abbr>
+      
+                      </label><div class="col-md-6"  >
+                    <div class="input-container">
+                      <select class="form-control"  name="filliere" ngModel (change)="getMoughataas($event.target.value)">
+                        <option *ngFor="let w of fillieres._embedded.fillieres" [value]=" w.id">{{w.nomfilliere}}</option>
+                      </select></div></div></div>
+      
+                      <br>
+  
+                  <br>    
+  
+  
+                <div   class="form-group row" *ngIf="moughataas">
+                  <label class="col-md-4 col-form-label  text-success"> 
+                    <strong>Niveau</strong> <abbr>*</abbr>
+  
+                  </label><div class="col-md-6"  >
+                <div class="input-container">
+                  <select class="form-control"  name="niveau" ngModel (change)="getNiveouGroupe($event.target.value)">
+                    <option *ngFor="let w of moughataas" [value]="w.id">{{w.nomNiveou}}</option>
+                  </select></div></div></div>
+  
+                  <br>
+      
+  
+                <div class="center">
+  
+                <button  type="submit" class="btn btn-success" >Enregistrer</button>
+  
+                </div>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+  
+  
