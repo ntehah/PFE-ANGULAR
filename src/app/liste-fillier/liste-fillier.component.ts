@@ -28,14 +28,21 @@ export class ListeFillierComponent implements OnInit {
   OnGetEtudiant;
   Etudiants;
   moughataas;
-  totalPages;
-  public size: number = 5;
-  pages;
+  
+  
   fillieresMDE;
   fillieresMQI;
   mode;
   departements;
-  public currentPage: number = 0;
+  pages;
+
+size:number=5;
+  currentPage:number=1;
+  totalpages:number;
+  Pages:Array<number>;
+  
+  currentNom:string="";
+ 
   constructor(private adminService: AdminService,
     private authentiservice: AuthentiService, private router: Router) {
 
@@ -47,27 +54,73 @@ export class ListeFillierComponent implements OnInit {
       // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
       .subscribe(data => {
         this.departements = data;
-        this.totalPages = data["page"].totalPages;
-        this.pages = new Array<number>(this.totalPages);
+        this.totalpages = data["page"].totalPages;
+        this.pages = new Array<number>(this.totalpages);
         console.log(data);
 
       }, err => {
         // console.log(err);
       })
+      // this.mode="tous";
+      // this.adminService.GetUser(this.adminService.url18)
+      // // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
+      // .subscribe(data => {
+      //   this.fillieresMDE = data;
 
-      this.mode="tous";
-      this.adminService.GetUser(this.adminService.url18)
-      // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-      .subscribe(data => {
-        this.fillieres = data;
+      //   this.totalpages = data["page"].totalPages;
+      //   this.pages = new Array<number>(this.totalpages);
+      //   console.log(data);
 
-        // this.totalPages = data["page"].totalPages;
-        // this.pages = new Array<number>(this.totalPages);
-        console.log(data);
+      // }, err => {
+      //   // console.log(err);
+      // })
 
-      }, err => {
-        // console.log(err);
-      })
+      // this.mode="tous";
+      // this.adminService.GetUser(this.adminService.url18)
+      // // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
+      // .subscribe(data => {
+      //   this.fillieres = data;
+
+      //   // this.totalPages = data["page"].totalPages;
+      //   // this.pages = new Array<number>(this.totalPages);
+      //   console.log(data);
+
+      // }, err => {
+      //   // console.log(err);
+      // })
+      this.Affichagefillieres()
+  
+
+    }
+    onChercher(form: any) {
+
+      this.currentNom=form.nomfilliere;
+      this.currentPage=0;
+      this.chercherFilliers();
+    }
+  
+    chercherFilliers() {
+  
+      this.adminService.getFillirebyNom(this.currentNom,this.currentPage,this.size)
+        .subscribe(data => {
+          this.totalpages = data.totalPages;
+          this.Pages = new Array(this.totalpages);
+          this.fillieres = data;
+          console.log(this.fillieres);
+        },error => {
+          console.log(error);
+        });}
+  Affichagefillieres(){
+    this.mode="tous";
+    this.adminService.getEntityPage(this.adminService.url30,this.currentPage,this.size)
+    .subscribe(data => {
+      this.totalpages=data.totalPages;
+      this.Pages=new Array(this.totalpages);
+      this.fillieres = data;
+      //console.log("Babs"+this.adherant.nom);
+    },error => {
+      console.log(error);
+    });
   }
 
 
@@ -78,8 +131,8 @@ export class ListeFillierComponent implements OnInit {
       .subscribe(data => {
         this.fillieresMDE = data;
 
-        this.totalPages = data["page"].totalPages;
-        this.pages = new Array<number>(this.totalPages);
+        this.totalpages = data["page"].totalPages;
+        this.pages = new Array<number>(this.totalpages);
         console.log(data);
 
       }, err => {
@@ -92,8 +145,8 @@ export class ListeFillierComponent implements OnInit {
       // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
       .subscribe(data => {
         this.fillieresMQI = data;
-        this.totalPages = data["page"].totalPages;
-        this.pages = new Array<number>(this.totalPages);
+        this.totalpages = data["page"].totalPages;
+        this.pages = new Array<number>(this.totalpages);
         console.log(data);
 
       }, err => {
@@ -138,4 +191,45 @@ export class ListeFillierComponent implements OnInit {
     console.log(mgt)
     this.selectedMoughataaId = mgt;
   }
-}
+  onPageTous(i) {
+    this.currentPage=i;
+    this.Affichagefillieres();
+
+
+  }
+
+  onSupprime(s) {
+    let conf=confirm("est vous sur?");
+    if(conf)
+      this.adminService.SuprimeFillier(s.id)
+        .subscribe(data => {
+          this.Affichagefillieres();
+        },error => {
+          console.log(error);
+        })
+  }
+  onSupprimeMQI(s) {
+    let conf=confirm("est vous sur?");
+    if(conf)
+      this.adminService.SuprimeFillier(s.id)
+        .subscribe(data => {
+          this.FilterParDepertementMQI();
+        },error => {
+          console.log(error);
+        })
+  }
+  onSupprimeMDE(s) {
+    let conf=confirm("est vous sur?");
+    if(conf)
+      this.adminService.SuprimeFillier(s.id)
+        .subscribe(data => {
+          this.FilterParDepertementMDE();
+        },error => {
+          console.log(error);
+        })
+  }
+  onEdit(o) {
+    this.router.navigateByUrl("/EditFillier/"+o.id);
+  }
+  }
+

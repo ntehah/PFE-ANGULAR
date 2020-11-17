@@ -21,9 +21,28 @@ export class SoumisionEtudiantComponent implements OnInit {
   url4="/sujets?projection=s2"
   enseignat;
   telEnsegniant;
+  demands;
+  d;
+  url6= "/getDemand";
   constructor( private sujetEnseignatService:SujetEnseignatService,private proposerGroupeService:ProposerGroupeService,private adminservice:AdminService) { }
  
   ngOnInit() {
+
+    this.sujetEnseignatService.GetSujet(this.url6).subscribe(
+      (data) => {
+        this.d = data;
+        if (this.d && this.d.etat > 0) {
+          this.demands = this.d;
+          console.log(data);
+        } else {
+          alert("Vous avez deja demander un sujet.");
+          console.log("DemandExist: " + data);
+        }
+      },
+      (err) => {
+        // console.log(err);
+      }
+     );
     this.adminservice.GetUser(this.adminservice.url)
     .subscribe(data=>{
       this.ensigniants=data;
@@ -41,7 +60,7 @@ export class SoumisionEtudiantComponent implements OnInit {
     //   console.log(err);
     // })
     let url1 =this.sujetEnseignatService.host2+this.url3
-    this.sujetEnseignatService.GetSujet(this.url3)
+    this.sujetEnseignatService.GetSujet("/SoumisionEtudiant")
     .subscribe(data=>{
       this.sujets=data;
       console.log(data);

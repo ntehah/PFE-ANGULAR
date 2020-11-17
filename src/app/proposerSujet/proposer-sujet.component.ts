@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { group } from 'console';
 import { ProposerGroupeService } from '../proposer-groupe.service';
-//import { url } from 'inspector';
 import { Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-proposerSujet',
   templateUrl: './proposer-sujet.component.html',
@@ -51,7 +48,7 @@ export class ProposerSujetComponent implements OnInit {
       this.groupeFilter = data;
     });
   }
- 
+
   onsaveSujetGrp(data) {
     // console.log(data);
     data["groupe"]="http://localhost:8024/groupes/"+this.groupeFilter["id"];

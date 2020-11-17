@@ -12,7 +12,7 @@ export class ProposeEnsegniantComponent implements OnInit {
   url2 = "/sujets";
   sujets;
   sujets1;
-  url3 = "/EtudiantListeSujetPropose";
+  url3 = "/listsujetpouretudiant";
   url4 = "/sujets?projection=s2";
   url5 = "/getDemand";
   enseignat;

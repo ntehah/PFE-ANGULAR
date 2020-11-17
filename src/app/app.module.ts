@@ -22,7 +22,7 @@ import { PlanningComponent } from './planning/planning.component';
 import { ConsultPlaningComponent } from './consult-planing/consult-planing.component';
 import { NevbarComponent } from './nevbar/nevbar.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
-import { EditEnsegnintComponent } from './edit-ensegnint/edit-ensegnint.component';
+// import { EditEnsegnintComponent } from './edit-ensegnint/edit-ensegnint.component';
 import { EditProposeEtudiantComponent } from './edit-propose-etudiant/edit-propose-etudiant.component';
 import { SoumisionEtudiantComponent } from './soumision-etudiant/soumision-etudiant.component';
 import { SujetValiderComponent } from './sujet-valider/sujet-valider.component';
@@ -57,6 +57,15 @@ import { DepotSujetFilliersComponent } from './depot-sujet-filliers/depot-sujet-
 import { SoutenaceFilliersComponent } from './soutenace-filliers/soutenace-filliers.component';
 import { SavePlaningSoutenaceComponent } from './save-planing-soutenace/save-planing-soutenace.component';
 import { AddJuryComponent } from './add-jury/add-jury.component';
+import { EditNiveouComponent } from './edit-niveou/edit-niveou.component';
+import { EditFillierComponent } from './edit-fillier/edit-fillier.component';
+import { EditGroupComponent } from './edit-group/edit-group.component';
+import { EditDepartementComponent } from './edit-departement/edit-departement.component';
+import { EditEtudiantComponent } from './edit-etudiant/edit-etudiant.component';
+import { EditEnsegniantComponent } from './edit-ensegniant/edit-ensegniant.component';
+
+import { ListeDemendePropositionComponent } from './liste-demende-proposition/liste-demende-proposition.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +99,7 @@ import { AddJuryComponent } from './add-jury/add-jury.component';
 
     AcceuilComponent,
 
-    EditEnsegnintComponent,
+    // EditEnsegnintComponent,
 
     EditProposeEtudiantComponent,
 
@@ -160,7 +169,21 @@ import { AddJuryComponent } from './add-jury/add-jury.component';
 
     
     //ListeusrComponent
+    EditNiveouComponent,
 
+    EditFillierComponent,
+
+    EditGroupComponent,
+
+    EditDepartementComponent,
+
+    EditEtudiantComponent,
+
+    EditEnsegniantComponent,
+
+    ListeDemendePropositionComponent,
+
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

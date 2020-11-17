@@ -12,7 +12,6 @@
                 cellpadding="3"
                 cellspacing="5"
                 rules="cols"
-                *ngIf="sujets"
               >
                 <thead class="text-success">
                   <th>filliere</th>
@@ -23,8 +22,8 @@
 
                   <th>Demandé</th>
                 </thead>
-                <tbody>
-                  <tr *ngFor="let s of sujets._embedded.sujets">
+                <tbody *ngIf="sujets">
+                  <tr *ngFor="let s of sujets">
                     <td *ngIf="s.ensigniant != null && s.valider == true">
                       {{ s.fillieres.nomfilliere }}
                     </td>
@@ -52,7 +51,7 @@
                   <tr></tr>
                 </tbody>
               </table>
-              <div class="card-body">
+              <!-- <div class="card-body">
                 <div class="table-responsive">
                   <table
                     class="table table-striped table-bordered table-sm"
@@ -101,7 +100,7 @@
                     </tbody>
                   </table>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 

@@ -1,6 +1,6 @@
-import { Component, OnInit, ɵConsole } from "@angular/core";
-import { Router } from "@angular/router";
-import { AuthentiService } from "../authenti.service";
+import {Component, OnInit, ɵConsole} from "@angular/core";
+import {Router} from "@angular/router";
+import {AuthentiService} from "../authenti.service";
 
 @Component({
   selector: "app-login",
@@ -8,11 +8,13 @@ import { AuthentiService } from "../authenti.service";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthentiService, private router: Router) {}
+  constructor(private authService: AuthentiService, private router: Router) {
+  }
 
   ngOnInit(): void {
     localStorage.clear();
   }
+
   onLogin(data) {
     this.authService.login(data).subscribe(
       (resp) => {
@@ -24,6 +26,8 @@ export class LoginComponent implements OnInit {
           (x) => {
             console.log(data);
             localStorage.setItem("USER_DATA", JSON.stringify(x));
+            this.authService.loadRoles();
+            this.authService.connecter=true;
           },
           (err) => {
             localStorage.setItem("USER_DATA", err.error.text);
@@ -32,15 +36,19 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("USER_NAME", JSON.stringify(resp));
         this.router.navigateByUrl("/Acceuil");
       },
-      (err) => {}
+      (err) => {
+      }
     );
   }
+
   isEnsigniant() {
     return this.authService.isEnsigniant();
   }
+
   isEtudiant() {
     return this.authService.isEtudiant();
   }
+
   isAuthenticated() {
     return this.authService.isAuthenticated;
   }

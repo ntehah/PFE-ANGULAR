@@ -106,7 +106,7 @@ export class ProposerGroupeService {
     let headers = new HttpHeaders({
       Authorization: "Bearer " + this.authentiService.jwToken,
     });
-    return this.http.get(this.host2 + "/GroupeEtuduant/", { headers: headers });
+    return this.http.get(this.host2 + "/GroupeEtuduant", { headers: headers });
   }
   deletRessource(url) {
     let headers = new HttpHeaders({

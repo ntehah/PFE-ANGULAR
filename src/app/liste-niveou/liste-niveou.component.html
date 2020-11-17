@@ -5,16 +5,17 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card">
+           
+            <h1 class="btn btn-success"><strong>niveau</strong></h1>
             <div class="col-sm-9">
               <!-- Search form -->
               <form class="form-inline d-flex justify-content-left md-form form-sm" #f="ngForm" (ngSubmit)="onChercher(f.value)">
                 <input class="form-control form-control-sm mr-3 w-15" type="text" placeholder="Chercher"
-                       aria-label="Chercher" ngModel name="nomNiveou"  required>
-                <i class="fas fa-search" aria-hidden="true" ></i>
+                       aria-label="Chercher"  name="nomNiveou"  ngModel >
+                <i class="fa fa-search" aria-hidden="true" ></i>
                 <button  class="btn btn-success btn-md  ml-sm-3 " type="submit">Chercher</button>
               </form>
             </div>
-            <h1 class="btn btn-success"><strong>niveau</strong></h1>
             <div class="d-flex flex-row-reverse">
               <a routerLink="/SaveNiveau" > <h6 class="card-title " class=" text-success"><span class="fa fa-plus-circle mr-3" style="font-size: 48px;"></span> </h6> </a>
   </div>
@@ -41,12 +42,12 @@
                     
     
   
-                  <!-- <th>
+                   <th>
                     Modifier
                   </th>
                   <th>
                     Supprimer
-                  </th> -->
+                  </th>
   
                
                
@@ -69,7 +70,22 @@
                       <td>
                         {{s.filliere.codefilliere}}
                       </td>
+
+                      <td>
+                        <button (click)="onEdit(s)">
+                          <img src="assets/menu/images/edit.jpg" width="30">
+                  
+                  
+                      </button>
+                      </td>
                    
+                      <td>
+                        <button (click)="onSupprime(s)">
+                          <img src="assets/menu/images/images.jpeg" width="30">
+                  
+                  
+                      </button>
+                      </td>
                     <!-- <td>
                       <button (click)="onEdit(s)">
                         <img src="assets/menu/images/edit.jpg" width="30">
@@ -87,13 +103,13 @@
                -->
                   </tr>
                   <tr></tr>
-                  <tr>
+                  <!-- <tr>
 
                     <ul class="cl"  *ngIf="pages" class="nav nav-pills">
                       <li class="clickable" [ngClass]="i==currentPage?'active':''"*ngFor="let p of pages;let i=index"> 
                        <a (click)="onPageOuvrage">{{i}}</a>
                       </li>   </ul>
-                  </tr>
+                  </tr> -->
   
                   </tbody>
                 </table>
@@ -109,13 +125,13 @@
               
               </div>
 
-              <div class="card-footer text-muted">
+              <!-- <div class="card-footer text-muted"> -->
                 <ul class="nav nav-pills espace">
                   <li class="nav-item modal-content-clickable"  *ngFor="let page of Pages; let i=index">
-                    <a class="nav-link  decalage"  [ngClass]="i==currentPage?'active':''"  (click)="onPageOuvrage(i)">{{i}}</a>
+                    <a class="nav-link  decalage"  [ngClass]="i==currentPage?'active':''"  (click)="onPageOuvrage(i)">{{i+1}}</a>
                   </li>
                 </ul>
-              </div>
+              <!-- </div> -->
             </div>
           </div>
         </div>

@@ -33,7 +33,10 @@ public currentPage:number=0;
   constructor( private adminService:AdminService,
     private authentiservice:AuthentiService,private router:Router) { }
   ngOnInit() {
-    
+  this.AffichageDepertement();
+
+  }
+  AffichageDepertement(){
     this.adminService.GetUser(this.adminService.url10)
     // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
     .subscribe(data=>{
@@ -44,6 +47,17 @@ public currentPage:number=0;
 
     },err=>{
       // console.log(err);
-    })
-
+    })}
+  onSupprime(s) {
+    let conf=confirm("est vous sur?");
+    if(conf)
+      this.adminService.SuprimeDepartement(s.id)
+        .subscribe(data => {
+          this.AffichageDepertement();
+        },error => {
+          console.log(error);
+        })
+  }
+  onEdit(o) {
+    this.router.navigateByUrl("/EditDepartement/"+o.id);
   }}

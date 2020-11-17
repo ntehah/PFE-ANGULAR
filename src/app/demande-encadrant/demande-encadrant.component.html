@@ -1,118 +1,110 @@
-<!-- sujetEtudiant -->
 
-<div class="col-md-12">
-  <div class="card">
-    <h6 class="btn btn-success">Listes des demendes d'encadrent</h6>
-    <div class="container-fluid">
-      <div class="row">
+  
+            
+  <!-- sujetEtudiant -->
+
+  <div class="col-md-12">
+    <div class="card">
+  
+      <h6 class="btn btn-success">Listes des demendes d'encadrent</h6>
+<div class="container-fluid">
+  <div class="row">
+    
+    
         <div class="card-body">
-          <div class="table-responsive">
-            <table
-              class="table table-striped table-bordered table-sm"
-              cellpadding="3"
-              cellspacing="5"
-              rules="cols"
-              *ngIf="sujets"
-            >
-              <thead class="text-success">
-                <th>filliére</th>
-                <th>titre</th>
-                <th>Entreprise d'cceuill</th>
-
-                <th>Demande Par</th>
-
-                <th>Refuse</th>
-                <th>Accepte</th>
-              </thead>
-              <tbody *ngIf="sujets">
-                <tr *ngFor="let s of sujets">
-                  <td *ngIf="s.sujet.fillieres">
-                    {{ s.sujet.fillieres.nomfilliere }}
-                  </td>
-
-                  <td *ngIf="s.sujet.titreSujet">
-                    {{ s.sujet.titreSujet }}
-                  </td>
-
-                  <td *ngIf="s.sujet.entreprise">
-                    {{ s.sujet.entreprise.nomEntreprice }}
-                  </td>
-
-                  <td *ngIf="s.groupe.nomGrp">
-                    {{ s.groupe.nomGrp }}
-                  </td>
-
-                  <td>
-                    <button
-                      *ngIf="s.etat === 0"
-                      data-toggle="modal"
-                      data-target="#exampleModalCenter"
-                      (click)="RefuserDemendeEncadrant(s.id)"
-                    >
-                      <img src="assets/menu/images/ref.jpg" width="30" />
-                    </button>
-                    <span *ngIf="s.etat === 2">REFUSEE</span>
-                  </td>
-                  <td>
-                    <button
-                      (click)="ValiderDemendeEncadrant(s.id)"
-                      *ngIf="s.etat === 0"
-                    >
-                      <img src="assets/menu/images/valid.jpg" width="30" />
-                    </button>
-                    <span *ngIf="s.etat === 1">VALIDEE</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <!-- <h3 style="color: seagreen;"> -->
+          <!-- <div *ngIf="sujets !== null"> Pas d'enregistrement</div></h3> -->
+          <div class="table-responsive" >
+              
+              <table class="table table-striped table-bordered table-sm"cellpadding="3" cellspacing="5" rules="cols" *ngIf="sujets">
+                  <thead class=" text-success">
+                      <!-- <th>
+                          ID
+                        </th>
+                      <th>
+                          Année Universitaire
+                        </th> -->
+                  
+                  <th>
+                      filliére
+                    </th>
+                    <th>
+                      titre
+                    </th>
+                  <th >
+                      Entreprise d'cceuill 
+                  </th>
+  
+                  <th >
+                      Proposé Par
+                  </th>
+                 
+                 
+                  
+                  <th>
+                      Refuse
+                    </th>
+                    <th>
+                        Accepte
+                      </th>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor= "let  s of sujets._embedded.sujets" >
+                      <!-- <td *ngIf="s.groupe !=null && s.demendeEncadrant == false && s.encad_acadimique.nomEnseigniant == user"> 
+                          {{s.id}}
+                        </td>
+                        <td *ngIf="s.groupe !=null && s.demendeEncadrant == false && s.encad_acadimique.nomEnseigniant == user" > 
+                          {{s.paramatrageAnnee.anneeEncours}}
+                        </td>
+                         -->
+                        <td *ngIf="s.groupe !=null && s.demendeEncadrant == false && s.encad_acadimique.nomEnseigniant == user">
+                          {{s.fillieres.nomfilliere}}
+                        </td>
+                  
+                    <td *ngIf="s.groupe !=null &&  s.demendeEncadrant == false && s.encad_acadimique.nomEnseigniant == user"> 
+                      {{s.titreSujet}}
+                    </td>
+                   
+                  
+                    <td *ngIf="s.groupe !=null && s.demendeEncadrant == false && s.encad_acadimique.nomEnseigniant == user">
+                      {{s.fillieres.nomEntreprice}}
+                      <!-- {{s.grp_propose.idGrp}}  -->
+                   </td>
+                    
+                    <td *ngIf="s.groupe !=null && s.demendeEncadrant == false && s.encad_acadimique.nomEnseigniant == user">
+                  
+                       {{s.groupe.idGrp}} 
+                   </td>
+                
+                   
+                   
+                    <td  *ngIf="s.groupe !=null && s.demendeEncadrant == false && s.encad_acadimique.nomEnseigniant == user">
+                      <button (click)="RefuserDemendeEncadrant(s)">
+                          <img src="assets/menu/images/ref.jpg" width="30">
+      
+                          
+                      </button>
+                    </td>
+                    <td  *ngIf="s.groupe !=null && s.demendeEncadrant == false && s.encad_acadimique.nomEnseigniant == user">
+                        <button (click)="ValiderDemendeEncadrant(s)">
+                            <img src="assets/menu/images/valid.jpg" width="30">
+        
+                            
+                        </button>
+                      </td>
+                  </tr>
+                  <tr></tr>
+  
+  
+  
+                </tbody>
+              </table>
+              </div>
+              </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+     
 
-<div
-  class="modal fade"
-  id="exampleModalCenter"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Note</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <label class="col-md-4 col-form-label text-success">
-          <strong>Note</strong> <abbr>*</abbr>
-        </label>
-        <div class="col-md-12">
-          <input type="text" name="note" [(ngModel)]="note" />
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-        <button
-          type="button"
-          class="btn btn-primary"
-          (click)="RefuseeAndSaveNote()"
-        >
-          Save changes
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+
+

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 import { AuthentiService } from '../authenti.service';
+import { Niveaus } from '../models/Niveau.models';
 
 @Component({
   selector: 'app-liste-niveou',
@@ -23,13 +24,13 @@ username;
 groupeFilter;
 OnGetEtudiant;
 Etudiants;
-Niveo
-
-totalPages;
+Niveo:Niveaus;
+niveaus;
+urls="/supprimerNiveou"
 
 pages;
-niveaus;
-size:number=2;
+
+size:number=5;
   currentPage:number=1;
   totalpages:number;
   Pages:Array<number>;
@@ -53,9 +54,6 @@ size:number=2;
     // })}
 
     this.AffichageNiveou()
-     
-
-
 
   }
 AffichageNiveou(){
@@ -68,9 +66,9 @@ AffichageNiveou(){
   },error => {
     console.log(error);
   });}
-  onChercher(dataForm) {
+  onChercher(form: any) {
 
-    this.currentNom=dataForm.nom;
+    this.currentNom=form.nomNiveou;
     this.currentPage=0;
     this.chercherNiveou();
   }
@@ -81,8 +79,8 @@ AffichageNiveou(){
       .subscribe(data => {
         this.totalpages = data.totalPages;
         this.Pages = new Array(this.totalpages);
-        this.Niveo = data;
-        console.log(this.Niveo);
+        this.niveaus = data;
+        console.log(this.niveaus);
       },error => {
         console.log(error);
       });
@@ -93,6 +91,20 @@ AffichageNiveou(){
     this.chercherNiveou();
 
 
+  }
+
+  onSupprime(s) {
+    let conf=confirm("est vous sur?");
+    if(conf)
+      this.adminService.SuprimeNiveou(s.id)
+        .subscribe(data => {
+          this.AffichageNiveou();
+        },error => {
+          console.log(error);
+        })
+  }
+  onEdit(o) {
+    this.router.navigateByUrl("/editNiveou/"+o.id);
   }
   }
 

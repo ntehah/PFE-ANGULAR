@@ -27,7 +27,7 @@
                   <select    class="form-control" 
                   name="username" #m (change)="getUsername (m.value)" ngModel >
                   <option *ngFor ="let p  of users._embedded.users"
-                  (value)="p.username" >{{p.username}}</option>
+                  (value)="p.username" >{{p.id}}</option>
                   </select>
                 </div>
               </div>

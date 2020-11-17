@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 import { AuthentiService } from '../authenti.service';
+import { Etudiant } from '../models/Etudiant.models';
 import { ProposerGroupeService } from '../proposer-groupe.service';
 
 @Component({
@@ -10,8 +11,9 @@ import { ProposerGroupeService } from '../proposer-groupe.service';
   styleUrls: ['./liste-etudiant.component.scss']
 })
 export class ListeEtudiantComponent implements OnInit {
-  DI;
+  
   url3="/sujets?projection=s1"
+  DI;
  GrpProposes;
  timepropose;
  showEtudiant;
@@ -23,31 +25,58 @@ export class ListeEtudiantComponent implements OnInit {
  nieouGrp;
  moughataas;
  mode;
+ EtudiantsComptes;
+fillieresMQI;
+BA;
+RS;
+FC;
+SE;
+groupeFilter;
+OnGetEtudiant;
+Etudiants;
+etudiants;
+RH;
+role;
+IG;
  url9="/users?projection=s3";
  timepropose1 =new Date('2021-07-17');
    a=new Date('2020-07-17')
 url6="/paramatragePeriodeProposes";
-EtudiantsComptes;
-fillieresMQI;
-groupeFilter;
-OnGetEtudiant;
-Etudiants;
-RH;
-role;
-IG;
+
 totalPages;
-public size:number=5;
-pages;
-etudiants;
+
 groupes
 TCM;
-public currentPage:number=0;
+
 AddToGrp;
-BA;
+
 clickMessage = '';
-RS;
-FC;
-SE;
+
+pages;
+
+size:number=5;
+  currentPage:number=1;
+  totalpages:number;
+  Pages:Array<number>;
+  
+  currentNom:string="";
+
+  pages1;
+  etudiant:Etudiant;
+size1:number=5;
+  currentPage1:number=1;
+  totalpages1:number;
+  Pages1:Array<number>;
+  
+  currentNom1:string="";
+  pages2;
+
+  size2:number=5;
+    currentPage2:number=1;
+    totalpages2:number;
+    Pages2:Array<number>;
+    
+    currentNom2:string="";
 selectedNiveouId;
   constructor( private adminService:AdminService,
     private authentiservice:AuthentiService,private router:Router, private proposerGroupeService:ProposerGroupeService) { }
@@ -91,39 +120,70 @@ selectedNiveouId;
     },err=>{
       console.log(err);
     })
-    this.mode="tous";
-    this.adminService.GetUser(this.adminService.url16)
+    // this.mode="tous";
+    // this.adminService.GetUser(this.adminService.url16)
   
-    // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-    .subscribe(data=>{
-      this.etudiants=data;
-      this.totalPages=data["page"].totalPages;
-      this.pages=new Array<number>(this.totalPages);
-      console.log(data);
+    // // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
+    // .subscribe(data=>{
+    //   this.etudiants=data;
+    //   this.totalPages=data["page"].totalPages;
+    //   this.pages=new Array<number>(this.totalPages);
+    //   console.log(data);
 
-    },err=>{
-      // console.log(err);
-    })
+    // },err=>{
+    //   // console.log(err);
+    // })
     // localStorage.setItem('MATRICULE',(JSON.parse((localStorage.getItem('USER_DATA')) as any).etudiants[0].matriculeetudiant));
     // this.proposerGroupeService.getGroupe(localStorage.getItem('MATRICULE')).subscribe(data => {
      
     //   this.groupeFilter = data;
     //   console.log(data);
     // });
+    this.AffichageEtudiants()
+  
+
+  }
+AffichageEtudiants(){
+  this.mode="tous";
+  this.adminService.getEntityPage(this.adminService.url29,this.currentPage,this.size)
+  .subscribe(data => {
+    this.totalpages=data.totalPages;
+    this.Pages=new Array(this.totalpages);
+    this.etudiants = data;
+    //console.log("Babs"+this.adherant.nom);
+  },error => {
+    console.log(error);
+  });}
+  onChercher(form: any) {
+
+    this.currentNom=form.matriculeetudiant;
+    this.currentPage=0;
+    this.chercherEtudiant();
+  }
+
+  chercherEtudiant() {
+
+    this.adminService.getEtudiantbyNom(this.currentNom,this.currentPage,this.size)
+      .subscribe(data => {
+        this.totalpages = data.totalPages;
+        this.Pages = new Array(this.totalpages);
+        this.etudiants = data;
+        console.log(this.etudiant);
+      },error => {
+        console.log(error);
+      });
   }
   FiliereSE(){
     this.mode='SE'
-  this.adminService.GetUser(this.adminService.url16)
-  // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-  .subscribe(data=>{
-    this.SE=data;
-    this.totalPages=data["page"].totalPages;
-    this.pages=new Array<number>(this.totalPages);
-    console.log(data);
-
-  },err=>{
-    // console.log(err);
-  })
+    this.adminService.getEntityPage(this.adminService.url29,this.currentPage,this.size)
+    .subscribe(data => {
+      this.totalpages=data.totalPages;
+      this.Pages=new Array(this.totalpages);
+      this.SE = data;
+      //console.log("Babs"+this.adherant.nom);
+    },error => {
+      console.log(error);
+    });
 }
  
 
@@ -131,148 +191,94 @@ selectedNiveouId;
 
   FiliereRH(){
     this.mode='RH'
-  this.adminService.GetUser(this.adminService.url16)
-  // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-  .subscribe(data=>{
-    this.RH=data;
-    this.totalPages=data["page"].totalPages;
-    this.pages=new Array<number>(this.totalPages);
-    console.log(data);
-
-  },err=>{
-    // console.log(err);
-  })
+    this.adminService.getEntityPage(this.adminService.url29,this.currentPage,this.size)
+    .subscribe(data => {
+      this.totalpages=data.totalPages;
+      this.Pages=new Array(this.totalpages);
+      this.IG = data;
+      //console.log("Babs"+this.adherant.nom);
+    },error => {
+      console.log(error);
+    });
 }
 
 
 FiliereDI(){
   this.mode='DI'
-this.adminService.GetUser(this.adminService.url16)
-// this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-.subscribe(data=>{
-  this.DI=data;
-  this.totalPages=data["page"].totalPages;
-  this.pages=new Array<number>(this.totalPages);
-  console.log(data);
-
-},err=>{
-  // console.log(err);
-})}
+  this.adminService.getEntityPage(this.adminService.url29,this.currentPage,this.size)
+  .subscribe(data => {
+    this.totalpages=data.totalPages;
+    this.Pages=new Array(this.totalpages);
+    this.DI = data;
+    //console.log("Babs"+this.adherant.nom);
+  },error => {
+    console.log(error);
+  });}
 
 FilterParRS(){
   this.mode='RS'
-this.adminService.GetUser(this.adminService.url16)
-// this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-.subscribe(data=>{
-  this.RS=data;
-  this.totalPages=data["page"].totalPages;
-  this.pages=new Array<number>(this.totalPages);
-  console.log(data);
-
-},err=>{
-  // console.log(err);
-})
+  this.adminService.getEntityPage(this.adminService.url29,this.currentPage,this.size)
+  .subscribe(data => {
+    this.totalpages=data.totalPages;
+    this.Pages=new Array(this.totalpages);
+    this.RS = data;
+    //console.log("Babs"+this.adherant.nom);
+  },error => {
+    console.log(error);
+  });
 }
  
 FiliereIG(){
   this.mode='IG'
-this.adminService.GetUser(this.adminService.url16)
-// this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-.subscribe(data=>{
-  this.IG=data;
-  this.totalPages=data["page"].totalPages;
-  this.pages=new Array<number>(this.totalPages);
-  console.log(data);
-
-},err=>{
-  // console.log(err);
-})
+  this.adminService.getEntityPage(this.adminService.url29,this.currentPage,this.size)
+  .subscribe(data => {
+    this.totalpages=data.totalPages;
+    this.Pages=new Array(this.totalpages);
+    this.IG = data;
+    //console.log("Babs"+this.adherant.nom);
+  },error => {
+    console.log(error);
+  });
 }
 FiliereTCM(){
   this.mode='TCM'
-this.adminService.GetUser(this.adminService.url16)
-// this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-.subscribe(data=>{
-  this.TCM=data;
-  this.totalPages=data["page"].totalPages;
-  this.pages=new Array<number>(this.totalPages);
-  console.log(data);
-
-},err=>{
-  // console.log(err);
-})
+  this.adminService.getEntityPage(this.adminService.url29,this.currentPage,this.size)
+  .subscribe(data => {
+    this.totalpages=data.totalPages;
+    this.Pages=new Array(this.totalpages);
+    this.TCM = data;
+    //console.log("Babs"+this.adherant.nom);
+  },error => {
+    console.log(error);
+  });
 }
 FillierFC(){
   this.mode='FC'
-  this.adminService.GetUser(this.adminService.url16)
-  // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-  .subscribe(data=>{
-    this.FC=data;
-    this.totalPages=data["page"].totalPages;
-    this.pages=new Array<number>(this.totalPages);
-    console.log(data);
- 
-  },err=>{
-    // console.log(err);
-  })
+  this.adminService.getEntityPage(this.adminService.url29,this.currentPage,this.size)
+  .subscribe(data => {
+    this.totalpages=data.totalPages;
+    this.Pages=new Array(this.totalpages);
+    this.FC = data;
+    //console.log("Babs"+this.adherant.nom);
+  },error => {
+    console.log(error);
+  });
 }
  FiliereBA(){
    this.mode='BA'
- this.adminService.GetUser(this.adminService.url16)
- // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
- .subscribe(data=>{
-   this.BA=data;
-   this.totalPages=data["page"].totalPages;
-   this.pages=new Array<number>(this.totalPages);
-   console.log(data);
-
- },err=>{
-   // console.log(err);
- })
-}
-  FilterParTous(){
-    this.mode='tous'
-  this.adminService.GetUser(this.adminService.url16)
-  // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-  .subscribe(data=>{
-    this.etudiants=data;
-    this.totalPages=data["page"].totalPages;
-    this.pages=new Array<number>(this.totalPages);
-    console.log(data);
-
-  },err=>{
-    // console.log(err);
-  })
+   this.adminService.getEntityPage(this.adminService.url29,this.currentPage,this.size)
+   .subscribe(data => {
+     this.totalpages=data.totalPages;
+     this.Pages=new Array(this.totalpages);
+     this.BA = data;
+     //console.log("Babs"+this.adherant.nom);
+   },error => {
+     console.log(error);
+   });
 }
  
-  FilterParDepertementMQI(){
-    this.mode='MQI';
-    this.adminService.GetUser(this.adminService.url16)
-    // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-    .subscribe(data=>{
-      this.fillieresMQI=data;
-      this.totalPages=data["page"].totalPages;
-      this.pages=new Array<number>(this.totalPages);
-      console.log(data);
-
-    },err=>{
-      // console.log(err);
-    })
-  }
-  FilterParDepertementMDE(){
-    this.mode='MDE';
-    this.adminService.GetUser(this.adminService.url16)
-    // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-    .subscribe(data=>{
-      this.fillieresMDE=data;
-      this.totalPages=data["page"].totalPages;
-      this.pages=new Array<number>(this.totalPages);
-      console.log(data);
-
-    },err=>{
-      // console.log(err);
-    })
-  }
+ 
+ 
 
   getRole(grp){
     this.role=grp;
@@ -359,6 +365,71 @@ FillierFC(){
     console.log(mgt1)
     this.selectedNiveouId = mgt1;
   }
+  onPageTous(i) {
+    this.currentPage=i;
+    this.AffichageEtudiants();
+
+
+  }
+  onPageDI(i){
+    this.currentPage=i;
+    this.FiliereDI();
+  }
+  onPageIG(i){
+    this.currentPage=i;
+    this.FiliereIG();
+  }
+
+  onPageRH(i){
+    this.currentPage=i;
+    this.FiliereRH();
+  }
+  onPageRS(i){
+    this.currentPage=i;
+    this.FilterParRS();
+  }
+  onPageTCM(i){
+    this.currentPage=i;
+    this.FiliereTCM();
+  }
+  onPageFC(i){
+    this.currentPage=i;
+    this.FillierFC();
+  }
+  onPageBA(i){
+    this.currentPage=i;
+    this.FiliereBA();
+  }
+
+  onPageSE(i){
+    this.currentPage=i;
+    this.FiliereSE();
+  }
+
+  onSupprimeDI(s) {
+    let conf=confirm("est vous sur?");
+    if(conf)
+      this.adminService.SuprimeEtudiant(s.id)
+        .subscribe(data => {
+          this.FiliereDI();
+        },error => {
+          console.log(error);
+        })
+  }
+  onSupprime(s) {
+    let conf=confirm("est vous sur?");
+    if(conf)
+      this.adminService.SuprimeEtudiant(s.id)
+        .subscribe(data => {
+          this.AffichageEtudiants();
+        },error => {
+          console.log(error);
+        })
+  }
+  onEdit(o) {
+    this.router.navigateByUrl("/editNiveou/"+o.id);
+  }
+
 }
 
 

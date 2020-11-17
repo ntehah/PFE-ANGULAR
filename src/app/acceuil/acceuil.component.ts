@@ -10,6 +10,7 @@ export class AcceuilComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
