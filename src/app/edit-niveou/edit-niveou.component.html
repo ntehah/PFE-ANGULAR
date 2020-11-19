@@ -1,0 +1,43 @@
+<div class="container" >
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="card">
+        
+            <h6 class="btn btn-success" ><strong>Modifier Niveau</strong></h6>
+  
+            <div class="card-body" *ngIf="curenteNiveou">
+            <form #f="ngForm" (ngSubmit)="onUpdateNiveu(f.value)" >
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label  text-success"><strong>filliere </strong></label>
+                <div class="col-md-3" ><input  type="text" required="required" class="form-control" name="filliere.codefilliere" placeholder="Entrer Titre du Nom Niveou"  ngModel [(ngModel)] ="curenteNiveou.filliere.codefilliere">
+                 </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label  text-success"><strong>annee </strong></label>
+                <div class="col-md-3" ><input  type="text" required="required" class="form-control" name="annee" placeholder="Entrer  Nom Niveou"  ngModel [(ngModel)] ="curenteNiveou.annee">
+                 </div>
+              </div> 
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label  text-success"><strong>nom </strong></label>
+                  <div class="col-md-3" ><input type="text" class="form-control" name="nomNiveou" placeholder="Entrer Nom Niveou"  ngModel [(ngModel)] ="curenteNiveou.nomNiveou">
+                   </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label  text-success"><strong>Code </strong></label>
+                    <div class="col-md-3" ><input type="text" class="form-control" name="code" placeholder="Entrer Titre du sujet"  ngModel [(ngModel)] ="curenteNiveou.code">
+                     </div>
+                  </div>
+                  <div class="center">
+  
+                    <button  type="submit" class="btn btn-success" >Modifier</button>
+      
+                    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

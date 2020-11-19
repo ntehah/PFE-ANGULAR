@@ -1,0 +1,34 @@
+<div class="container" >
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="card">
+        
+            <h6 class="btn btn-success" ><strong>Modifier Groupe</strong></h6>
+  
+            <div class="card-body" *ngIf="curenteGroup">
+            <form #f="ngForm" (ngSubmit)="updateDepertement(f.value)" >
+               
+                <div class="form-group row">
+                  <label class="col-md-2 col-form-label  text-success"><strong>nom </strong></label>
+                  <div class="col-md-3" ><input type="text" class="form-control" name="nomDepartement" placeholder="Entrer Titre du Nom Dapertement"  ngModel [(ngModel)] ="curenteGroup.nomDepartement">
+                   </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label  text-success"><strong>Code </strong></label>
+                    <div class="col-md-3" ><input type="text" class="form-control" name="codeDepartement" placeholder="Entrer Code departement"  ngModel [(ngModel)] ="curenteGroup.codeDepartement">
+                     </div>
+                  </div>
+                  <div class="center">
+  
+                    <button  type="submit" class="btn btn-success" >Modifier</button>
+      
+                    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
