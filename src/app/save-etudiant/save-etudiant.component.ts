@@ -55,15 +55,15 @@ export class SaveEtudiantComponent implements OnInit {
     },err=>{
       console.log(err);
     })
-  
+
   }
-    
+
   getNomFillier(nom){
     this.nomFilliere=nom;
-  
+
      console.log(nom);
   }
-  
+
 
   onsaveEtudiant(dataForm){
     // dataForm.popvisee = parseInt(dataForm.nb011) + parseInt(dataForm.nb1259);
@@ -75,7 +75,7 @@ export class SaveEtudiantComponent implements OnInit {
        this.moughataas.map((m)=>{
          if(m.id==this.selectedMoughataaId)
            dataForm.moughataa = m;
-           
+
        })
       //  this.nieouGrp.map((w)=>{
       //   if(w.id==this.selectedWilayaId){
@@ -85,7 +85,7 @@ export class SaveEtudiantComponent implements OnInit {
       // this.moughataas.map((m)=>{
       //   if(m.id==this.selectedNiveouId)
       //     dataForm.moughataa = m;
-          
+
       // })
       //  this.adminService.getDemographie(this.demo.id).subscribe((demog)=>{
       //    dataForm.demographie = demog;
@@ -96,7 +96,7 @@ export class SaveEtudiantComponent implements OnInit {
        }
   // onsaveEtudiant(data){
   //   //  data["ensigniant"]="http://localhost:8024/ensigniants/3679082";
-    
+
   //   let s=confirm("Etes vous sure?");
   //   if(!s)return;
   //    console.log(data);
