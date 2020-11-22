@@ -9,7 +9,7 @@ import { AuthentiService } from '../authenti.service';
   styleUrls: ['./soutenace-filliers.component.scss']
 })
 export class SoutenaceFilliersComponent implements OnInit {
-  
+  listIdFilliers:any[]=[];
   sujets;
   url3="/sujets?projection=s1"
   ensigniants;
@@ -28,8 +28,17 @@ export class SoutenaceFilliersComponent implements OnInit {
   totalPages
   pages
   constructor( private adminService:AdminService, private router:Router,private authentiservice:AuthentiService) { }
-
+  dropdownSettings = {};
   ngOnInit() {
+    this.dropdownSettings= {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'nomfilliere',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
     this.adminService.GetUser(this.adminService.url10)
     // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
     .subscribe(data=>{
@@ -45,7 +54,7 @@ export class SoutenaceFilliersComponent implements OnInit {
     // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
     .subscribe(data=>{
       this.fillieres=data;
-      
+
       console.log(data);
 
     },err=>{
@@ -55,7 +64,7 @@ export class SoutenaceFilliersComponent implements OnInit {
     // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
     .subscribe(data=>{
       this.planningSoutenances=data;
-      
+
       console.log(data);
 
     },err=>{
@@ -65,15 +74,23 @@ export class SoutenaceFilliersComponent implements OnInit {
     // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
     .subscribe(data=>{
       this.paramatrageAnnees=data;
-      
+
       console.log(data);
 
     },err=>{
       // console.log(err);
     })
-    
+
   }
-  
+  onItemSelect(item: any) {
+    this.listIdFilliers.push(item.id);
+  }
+  onSelectAll(items: any) {
+    for (let i=0;i<items.length;i++){
+      this.listIdFilliers.push(items[i].id)
+    }
+  }
+
   onsaveGroup(data){
     //  data["ensigniant"]="http://localhost:8024/ensigniants/3679082";
     this.mode='savegrp';
@@ -87,12 +104,11 @@ export class SoutenaceFilliersComponent implements OnInit {
        console.log(err)
      })
     // this.router.navigateByUrl("/ListeproposeEnseignat");
-    
+
    }
    SavefillierePlaningSoutenace(data){
-     
-    //  data["ensigniant"]="http://localhost:8024/ensigniants/3679082";
-   
+
+console.log(data);
     let s=confirm("Etes vous sure?");
     if(!s)return;
      console.log(data);
@@ -101,7 +117,7 @@ export class SoutenaceFilliersComponent implements OnInit {
        alert("Ajouter avec succes")
      },err=>{
        console.log(err)
-       
+
      })
     //  this.router.navigateByUrl("/ListeFilliers");
    }

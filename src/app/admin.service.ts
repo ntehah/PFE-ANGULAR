@@ -47,15 +47,15 @@ url32="http://localhost:8024/listGroupe"
 
 gethost(url: any): Observable<any> {
    let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
-   
+
   return this.http.get(this.host2 + url, {headers: headers});
 }
 
   constructor(private authentiService:AuthentiService ,private http:HttpClient,) { }
   getDepertementFilliers(id){
-    
+
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
-   
+
     return this.http.get(this.host2+'/getDepertementFilliers/'+id, {headers: headers})
   }
 
@@ -69,12 +69,12 @@ gethost(url: any): Observable<any> {
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
     return this.http.get(this.host2+'/getNiveouGroupe/'+id, {headers: headers})
   }
-  
+
   getFillierNiveou(id){
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
     return this.http.get(this.host2+'/getFillierNiveou/'+id, {headers: headers})
   }
-  
+
   getGroupeFilliere(id){
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
     return this.http.get(this.host2+'/getGroupeFilliere/'+id, {headers: headers})
@@ -93,12 +93,12 @@ gethost(url: any): Observable<any> {
   //   return this.http.get(this.host2+'/addEtudiantToGroup/'+nom+'/'+nomGrp, {headers: headers})
   // }
   SaveNiveau(url,data){
- 
+
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
       return this.http.post(url,data,{headers: headers});
   }
    SaveEtudiant(url,data){
- 
+
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
       return this.http.post(url,data,{headers: headers});
   }
@@ -107,14 +107,14 @@ gethost(url: any): Observable<any> {
     return this.http.get(this.host2+"/supprimerFilliere/"+id, {headers: headers})
   }
 
-  
+
    GetRoles(url){
-   
+
      let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
        return this.http.get(url,{headers: headers});
    }
    GetUser(url){
-   
+
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
       return this.http.get(url,{headers: headers});
   }
@@ -183,39 +183,45 @@ gethost(url: any): Observable<any> {
   updateNiveou (id:number,data)
   {
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
-    
+
     return this.http.put(this.host2+"/modifierNiveau/"+id,data,{headers: headers});
   }
 
   updateFilliere(id:number,data)
   {
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
-    
+
     return this.http.put(this.host2+"/modifierFilliere/"+id,data,{headers: headers});
   }
 
   updateDepertement(id:number,data)
   {
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
-    
+
     return this.http.put(this.host2+"/modifierDepartement/"+id,data,{headers: headers});
   }
   updateEtudiant(id:number,data)
   {
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
-    
+
     return this.http.put(this.host2+"/modifierEtudiant/"+id,data,{headers: headers});
   }
   updateEnsegniat(id:number,data)
   {
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
-    
+
     return this.http.put(this.host2+"/modifierEnsegniant/"+id,data,{headers: headers});
+  }
+  updateUser(data)
+  {
+    let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
+
+    return this.http.put(this.host2+"/updateuser",data,{headers: headers});
   }
   updateGroup(id:number,data)
   {
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
-    
+
     return this.http.put(this.host2+"/modifierGroupe/"+id,data,{headers: headers});
   }
 
@@ -223,11 +229,11 @@ gethost(url: any): Observable<any> {
   getGroupbyNom(nomGrp:string,page: number, size: number) :Observable<any>{
 
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
-   
+
     return this.http.get( this.host2 +"/chercherGroupe?nomGrp="+nomGrp+"&page=" + page + "&size=" + size,{headers: headers});
   }
 
-  
+
   getNiveouById(id:number)
   {
     let headers=new  HttpHeaders({'Authorization':'Bearer '+this.authentiService.jwToken})
@@ -264,6 +270,6 @@ gethost(url: any): Observable<any> {
     return this.http.get(this.host2+"/afficherByIdEnsegniant/"+id,{headers: headers});
 
   }
-  
-  
+
+
 }

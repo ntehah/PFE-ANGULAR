@@ -46,9 +46,9 @@ IG;
     currentPage:number=0;
     totalpages:number;
     Pages:Array<number>;
-    
+
     currentNom:string="";
-  
+
   url3="/sujets?projection=s1"
 //  GrpProposes;
 //  timepropose;
@@ -66,30 +66,12 @@ url6="/paramatragePeriodeProposes";
   constructor( private adminService:AdminService,
     private authentiservice:AuthentiService,private router:Router) { }
   ngOnInit() {
-
-
-    
-    // this.adminService.GetUser(this.adminService.url21)
-    // // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-    // .subscribe(data=>{
-    //   this.groupes=data;
-    //   this.totalPages=data["page"].totalPages;
-    //   this.pages=new Array<number>(this.totalPages);
-    //   console.log(data);
-
-    // },err=>{
-    //   // console.log(err);
-    // })
     this.adminService.GetUser(this.adminService.url10)
-    // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
     .subscribe(data=>{
       this.departements=data;
-      // this.totalPages=data["page"].totalPages;
-      // this.pages=new Array<number>(this.totalPages);
       console.log(data);
 
     },err=>{
-      // console.log(err);
     })
     this.adminService.GetRoles(this.adminService.url26)
     .subscribe(data=>{
@@ -116,24 +98,8 @@ url6="/paramatragePeriodeProposes";
     },err=>{
       console.log(err);
     })
-  
-  
-   
-  
-    // this.adminService.GetUser(this.adminService.url21)
-    // // this.proposerGroupeService.GetSujetpage(this.currentPage,this.size)
-    // .subscribe(data=>{
-    //   this.groupes=data;
-    //   this.totalPages=data["page"].totalPages;
-    //   this.pages=new Array<number>(this.totalPages);
-    //   console.log(data);
-
-    // },err=>{
-    //   // console.log(err);
-    // })
-
     this.AffichageGroupe()
-  
+
 }
   AffichageGroupe(){
     this.mode='tous';
@@ -151,7 +117,7 @@ url6="/paramatragePeriodeProposes";
     this.currentNom=form.nomGrp;
     this.currentPage=0;
     this.chercheGroup();
-    
+
   }
 
   chercheGroup() {
@@ -166,7 +132,7 @@ url6="/paramatragePeriodeProposes";
         console.log(error);
       });
   }
- 
+
 
   onPageOuvrage(i) {
     this.currentPage=i;
@@ -199,7 +165,7 @@ url6="/paramatragePeriodeProposes";
     console.log(error);
   });
 }
- 
+
   AffichageGroupesDIM2(){
     this.mode='GroupesDILM2'
     this.adminService.getEntityPage(this.adminService.url32,this.currentPage,this.size)
@@ -211,7 +177,7 @@ url6="/paramatragePeriodeProposes";
   },error => {
     console.log(error);
   });}
- 
+
   onPageGroupesDIL3(i) {
     this.currentPage=i;
     // this.chercherNiveou();
@@ -237,7 +203,7 @@ url6="/paramatragePeriodeProposes";
     this.AffichageGroupesIGM2()
 
   }
- 
+
   AffichageGroupesIGL3(){
     this.mode='GroupesDIG3'
     this.adminService.getEntityPage(this.adminService.url32,this.currentPage,this.size)
@@ -250,7 +216,7 @@ url6="/paramatragePeriodeProposes";
     console.log(error);
   });
 }
- 
+
   AffichageGroupesIGM2(){
     this.mode='GroupesIGLM2'
     this.adminService.getEntityPage(this.adminService.url32,this.currentPage,this.size)
@@ -262,23 +228,23 @@ url6="/paramatragePeriodeProposes";
   },error => {
     console.log(error);
   });}
- 
 
 
- 
+
+
   getdepartements(wilaya){
     this.selectedWilayaId = wilaya;
     this.adminService.getDepertementFilliers(wilaya).subscribe((data)=>{
       this.moughataas = data;
 
 
-      
+
       console.log(this.moughataas);
     })
   }
 
   setSelectedMoughataa(value){
-    
+
     console.log(value)
     this.selectedMoughataaId = value;}
 
@@ -289,10 +255,10 @@ url6="/paramatragePeriodeProposes";
         console.log(this.niveaus);
       })
     }
-  
+
     setSelectedNiveou(mgt){
       console.log(mgt)
-     
+
       // console.log( this.niveaus.mgt)
       this.selectedNiveouId = mgt;
       if (mgt == 'Licence3') {
@@ -309,7 +275,7 @@ url6="/paramatragePeriodeProposes";
     // if (value == 'Develeoppment_Informatique') {
     //   this.FiliereDI();
     // }
-    
+
     // if (value == 'Informatique du Gestion') {
     //   this.FiliereIG();
     // }
@@ -331,7 +297,7 @@ url6="/paramatragePeriodeProposes";
     // if (value == 'Techniques  Commerciales et Marketing') {
     //   this.FiliereTCM();
     // }
-   
+
   // }
 
   getFillierNiveou(Niveo){

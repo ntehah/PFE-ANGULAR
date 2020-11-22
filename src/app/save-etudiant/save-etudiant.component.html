@@ -34,7 +34,7 @@
                 </label>
                 <div class="col-md-6">
                   <div class="input-container">
-                    <select class="form-control" name="filliere" ngModel (change)="getMoughataas($event.target.value)">
+                    <select class="form-control" name="nomfilliere" ngModel (change)="getMoughataas($event.target.value)">
                       <option *ngFor="let w of fillieres._embedded.fillieres" [value]=" w.id">{{w.nomfilliere}}</option>
                     </select></div>
                 </div>
@@ -49,7 +49,7 @@
                 </label>
                 <div class="col-md-6">
                   <div class="input-container">
-                    <select class="form-control" name="niveau" ngModel (change)="getNiveouGroupe($event.target.value)">
+                    <select class="form-control" name="nomNiveou" ngModel (change)="getNiveouGroupe($event.target.value)">
                       <option *ngFor="let w of moughataas" [value]="w.id">{{w.nomNiveou}}</option>
                     </select></div>
                 </div>
@@ -65,9 +65,9 @@
                 <div class="col-md-6">
 
                   <div class="input-container">
-                    <select class="form-control" name="groupe" ngModel
+                    <select class="form-control" name="nomGrp" ngModel
                             (change)="setSelectedNiveou($event.target.value)">
-                      <option *ngFor="let m of nieouGrp" [value]="m.nomGrp">{{m.nomGrp}}</option>
+                      <option *ngFor="let m of nieouGrp" [value]="m.id">{{m.nomGrp}}</option>
                     </select>
                   </div>
                 </div>

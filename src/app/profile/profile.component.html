@@ -1,1 +1,137 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 ">
+        <div class="card">
+
+          <h6 class="btn btn-success"><strong>Profile</strong></h6>
+
+          <div class="card-body" *ngIf="profile">
+            <form #f="ngForm" (ngSubmit)="updateProfile(f.value)">
+
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label  text-success"><strong>Username </strong></label>
+                <div class="col-md-4"><input type="text" class="form-control" name="username"
+                                             placeholder="username" ngModel value="{{profile.username}}"
+                                             [(ngModel)]="profile.username">
+                </div>
+              </div>
+
+              <div class="form-group row" *ngIf="profile.email">
+                <label class="col-md-3 col-form-label  text-success"><strong>Email </strong></label>
+                <div class="col-md-4"><input type="text" class="form-control" name="email"
+                                             placeholder="email" ngModel value="{{profile.email}}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label  text-success"><strong>Nouveau mot de pass </strong></label>
+                <div class="col-md-4"><input type="text" class="form-control" name="motdepass"
+                                             placeholder="mot de pass" ngModel>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label  text-success"><strong>Confirmer mot de pass </strong></label>
+                <div class="col-md-4"><input type="text" class="form-control" name="confirmermotdepass"
+                                             placeholder="confirmer mot de pass" ngModel>
+                </div>
+              </div>
+              <div *ngIf="enseingant">
+                <label class="col-md-12 col-form-label  text-success center"><strong>Enseingant </strong></label>
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>Departement</strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="departement"
+                                               ngModel [(ngModel)]="enseingant.departement.nomDepartement"
+                                               value="{{enseingant.departement.nomDepartement}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>Nom </strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="nom"
+                                               placeholder="nom" ngModel [(ngModel)]="enseingant.nomEnseigniant"
+                                               value="{{enseingant.nomEnseigniant}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>Prenom </strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="prenom"
+                                               placeholder="prenom" ngModel [(ngModel)]="enseingant.prenom"
+                                               value="{{enseingant.prenom}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>Specialite </strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="specialiter"
+                                               placeholder="specialiter" ngModel [(ngModel)]="enseingant.specialiter"
+                                               value="{{enseingant.specialiter}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>Numero de telephone </strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="telEnsegniant"
+                                               placeholder="numero de telephone" ngModel
+                                               [(ngModel)]="enseingant.telEnsegniant"
+                                               value="{{enseingant.telEnsegniant}}">
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="etudiant">
+                <label class="col-md-12 col-form-label  text-success center"><strong>Etudiant </strong></label>
+
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>Nom</strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="nom"
+                                               ngModel [(ngModel)]="etudiant.nom" value="{{etudiant.nom}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>Prenom </strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="prenom"
+                                               placeholder="prenom" ngModel [(ngModel)]="etudiant.prenom"
+                                               value="{{etudiant.prenom}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>filliere </strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="filliere" disabled
+                                               placeholder="filliere" ngModel
+                                               [(ngModel)]="etudiant.filliere.nomfilliere"
+                                               value="{{etudiant.filliere.nomfilliere}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>Groupe </strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="groupe" disabled
+                                               placeholder="groupe" ngModel [(ngModel)]="etudiant.groupe.nomGrp"
+                                               value="{{etudiant.groupe.nomGrp}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>Matricule Etudiant </strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="matriculeetudiant" disabled
+                                               placeholder="numero de telephone" ngModel
+                                               [(ngModel)]="etudiant.matriculeetudiant"
+                                               value="{{etudiant.matriculeetudiant}}">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label  text-success"><strong>Niveau </strong></label>
+                  <div class="col-md-4"><input type="text" class="form-control" name="niveau" disabled
+                                               placeholder="numero de telephone" ngModel
+                                               [(ngModel)]="etudiant.niveau.nomNiveou"
+                                               value="{{etudiant.niveau.nomNiveou}}">
+                  </div>
+                </div>
+              </div>
+              <div class="center">
+
+                <button type="submit" class="btn btn-success">Modifier</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

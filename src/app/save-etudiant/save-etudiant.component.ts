@@ -66,17 +66,18 @@ export class SaveEtudiantComponent implements OnInit {
 
 
   onsaveEtudiant(dataForm){
+    console.log(dataForm)
     // dataForm.popvisee = parseInt(dataForm.nb011) + parseInt(dataForm.nb1259);
-       this.fillieres.map((w)=>{
-         if(w.id==this.selectedWilayaId){
-           dataForm.wilaya=null;
-         }
-       })
-       this.moughataas.map((m)=>{
-         if(m.id==this.selectedMoughataaId)
-           dataForm.moughataa = m;
-
-       })
+    //    this.fillieres.map((w)=>{
+    //      if(w.id==this.selectedWilayaId){
+    //        dataForm.wilaya=null;
+    //      }
+    //    })
+    //    this.moughataas.map((m)=>{
+    //      if(m.id==this.selectedMoughataaId)
+    //        dataForm.moughataa = m;
+    //
+    //    })
       //  this.nieouGrp.map((w)=>{
       //   if(w.id==this.selectedWilayaId){
       //     dataForm.wilaya=null;

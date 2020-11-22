@@ -66,6 +66,7 @@ import { EditEnsegniantComponent } from './edit-ensegniant/edit-ensegniant.compo
 
 import { ListeDemendePropositionComponent } from './liste-demende-proposition/liste-demende-proposition.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -167,7 +168,7 @@ import { ProfileComponent } from './profile/profile.component';
 
     // NeouveouSujetEnsegniatComponent,
 
-    
+
     //ListeusrComponent
     EditNiveouComponent,
 
@@ -191,7 +192,7 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
